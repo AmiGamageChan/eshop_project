@@ -244,7 +244,7 @@ function regProduct(){
   var color = document.getElementById("color");
   var size = document.getElementById("size");
   var desc = document.getElementById("desc");
-  var file = document.getElementById("file");
+  var image = document.getElementById("image");
 
   var form = new FormData();
 
@@ -254,6 +254,17 @@ function regProduct(){
   form.append("color", color.value);
   form.append("size", size.value);
   form.append("desc", desc.value);
-  form.append("image", file.files[0]);
+  form.append("image", image.files[0]);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function(){
+    if(request.readyState == 4 && request.status == 200){
+      var response = request.responseText;
+      alert(response);
+    }
+  }
+
+  request.open("POST", "productRegProcess.php", true);
+  request.send(form);
 
 }

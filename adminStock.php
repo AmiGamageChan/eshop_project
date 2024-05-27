@@ -31,13 +31,14 @@ if (isset($_SESSION["a"])) { ?>
 
                     <div class="mb-3">
                         <label class="form-label">Product Name</label>
-                        <input type="text" class="form-control" id="pname"/>
+                        <input type="text" class="form-control" id="pname" />
                     </div>
 
                     <div class="row">
                         <div class="mb-3 col-6">
                             <label class="form-label" for="">Brand</label>
                             <select id="brand" class="form-select">
+                                <option value="0">Select</option>
 
                                 <?php
                                 $rs = Database::search("SELECT * FROM `brand`");
@@ -59,6 +60,7 @@ if (isset($_SESSION["a"])) { ?>
 
                             <label for="" class="form-label">Category</label>
                             <select id="cat" class="form-select">
+                                <option value="0">Select</option>
 
                                 <?php
                                 $rs = Database::search("SELECT * FROM `category`");
@@ -79,6 +81,7 @@ if (isset($_SESSION["a"])) { ?>
 
                             <label for="" class="form-label">Color</label>
                             <select id="color" class="form-select">
+                                <option value="0">Select</option>
 
                                 <?php
                                 $rs = Database::search("SELECT * FROM `color`");
@@ -99,6 +102,7 @@ if (isset($_SESSION["a"])) { ?>
 
                             <label for="" class="form-label">Size</label>
                             <select id="size" class="form-select">
+                                <option value="0">Select</option>
 
                                 <?php
                                 $rs = Database::search("SELECT * FROM `size`");
@@ -125,12 +129,12 @@ if (isset($_SESSION["a"])) { ?>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-form-label" for="">Product Image</label>
-                        <input id="file" class="form-control" type="file">
+                        <label class="form-label">Product Image</label>
+                        <input class="form-control" type="file" id="image" name="image">
                     </div>
 
                     <div class="d-grid">
-                        <button class="btn btn-secondary">Register Product</button>
+                        <button class="btn btn-secondary" onclick="regProduct();">Register Product</button>
                     </div>
 
                 </div>
