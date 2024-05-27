@@ -30,8 +30,8 @@ if (isset($_SESSION["a"])) { ?>
                     <h2 class="text-center">Product Registration</h2>
 
                     <div class="mb-3">
-                        <label for="" class="form-label">Product Name</label>
-                        <input type="text" class="form-control" />
+                        <label class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="pname"/>
                     </div>
 
                     <div class="row">

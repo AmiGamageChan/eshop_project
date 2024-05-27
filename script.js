@@ -236,3 +236,24 @@ function sizeReg() {
   request.open("POST", "sizeRegisterProcess.php", true);
   request.send(f);
 }
+
+function regProduct(){
+  var pname = document.getElementById("pname");
+  var brand = document.getElementById("brand");
+  var cat = document.getElementById("cat");
+  var color = document.getElementById("color");
+  var size = document.getElementById("size");
+  var desc = document.getElementById("desc");
+  var file = document.getElementById("file");
+
+  var form = new FormData();
+
+  form.append("pname", pname.value);
+  form.append("brand", brand.value);
+  form.append("cat", cat.value);
+  form.append("color", color.value);
+  form.append("size", size.value);
+  form.append("desc", desc.value);
+  form.append("image", file.files[0]);
+
+}
