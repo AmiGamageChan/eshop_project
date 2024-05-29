@@ -224,7 +224,7 @@ function sizeReg() {
       if (response == "Success") {
         document.getElementById("msgDiv4").className = "d-block";
         document.getElementById("msg4").className = "alert alert-success";
-        document.getElementById("msg4").innerHTML = "Size Registered";        
+        document.getElementById("msg4").innerHTML = "Size Registered";
         size.value = "";
       } else {
         document.getElementById("msg4").innerHTML = response;
@@ -237,24 +237,81 @@ function sizeReg() {
   request.send(f);
 }
 
-function regProduct(){
+function regProduct() {
   var pname = document.getElementById("pname");
   var brand = document.getElementById("brand");
   var cat = document.getElementById("cat");
   var color = document.getElementById("color");
   var size = document.getElementById("size");
   var desc = document.getElementById("desc");
-  var image = document.getElementById("image");
+  var file = document.getElementById("file");
 
-  var form = new FormData();
+  var f = new FormData();
 
-  form.append("pname", pname.value);
-  form.append("brand", brand.value);
-  form.append("cat", cat.value);
-  form.append("color", color.value);
-  form.append("size", size.value);
-  form.append("desc", desc.value);
-  form.append("image", image.files[0]);
+  f.append("p", pname.value);
+  f.append("b", brand.value);
+  f.append("ca", cat.value);
+  f.append("co", color.value);
+  f.append("s", size.value);
+  f.append("d", desc.value);
+  f.append("f", file.files[0]);
+
+  // alert(cat.value);
+
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      alert(response);
+    }
+  };
+
+  request.open("POST", "productRegProcess.php", true);
+  request.send(f);
+}
+
+function updateStock() {
+  var pname = document.getElementById("selectProduct");
+  var qty = document.getElementById("qty");
+  var price = document.getElementById("uprice");
+
+  //alert(pname.value);
+
+  var f = new FormData();
+  f.append("p", pname.value);
+  f.append("q", qty.value);
+  f.append("up", price.value);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if ((request.readyState == 4) & (request.status == 200)) {
+      var response = request.responseText;
+      alert(response);
+      location.reload();
+    }
+  };
+}
+
+function printDiv(){
+  var originalContent = document.body.innerHTML;
+  var PrintArea = document.getElementById("printArea");
+
+  document.body.innerHTML = printArea;
+
+  window.print();
+
+  document.body.innerHTML = originalContent;
+
+}
+
+function loadProduct(x){
+  var page = x;
+
+  //alert(x);
+
+  var f = new FormData();
+  f.append("p",page);
 
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
@@ -262,9 +319,9 @@ function regProduct(){
       var response = request.responseText;
       alert(response);
     }
-  }
+  };
 
-  request.open("POST", "productRegProcess.php", true);
-  request.send(form);
+  request.open("POST", "loadProductProcess.php", true);
+  request.send(f);
 
 }

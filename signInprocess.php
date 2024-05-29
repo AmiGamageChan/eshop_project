@@ -40,9 +40,9 @@ if (empty($username)) {
             
 
         } else {
-            echo ("innactive user");
+            echo ("Inactive user");
         }
     } else {
-        echo ("inavild user name or password");
+        echo ("invalid username or password");
     }
 }

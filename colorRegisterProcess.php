@@ -1,21 +1,25 @@
 <?php
+
 include "connection.php";
 
-$clr = $_POST["cl"];
+$color = $_POST["cl"];
 
-if (empty($clr)) {
-    echo ("Please enter the color");
-} else if (strlen($clr) > 20) {
-    echo ("Your color should be less than 20 characters");
+if (empty($color)) {
+    echo ("Please enter color name");
+} elseif (strlen($color) > 20) {
+    echo ("Should be more than 20 characters");
 } else {
-    $rs = Database::search("SELECT * FROM `color` WHERE `color_name` = '" . $clr . "'");
+
+    // echo("success");
+
+    $rs = Database::search("SELECT * FROM `color` WHERE `color_name` = '" . $color . "'");
     $num = $rs->num_rows;
 
     if ($num > 0) {
-        echo ("Your color name already exists");
+        echo ("Your color name is Already exist");
     } else {
-        Database::iud("INSERT INTO `color` (`color_name`) VALUES ('" . $clr . "')");
-        echo("Success");
+
+        Database::iud("INSERT INTO `color` (`color_name`) VALUES ('" . $color . "')");
+        echo ("Success");
     }
 }
-?>

@@ -57,7 +57,7 @@
         </div>
 
         <div class="mt-2">
-            <button class="btn btn-outline-secondary col-12" onclick="changeView();">New to online store? </button>
+            <button class="btn btn-outline-secondary col-12" onclick="changeView();">Haven't registered yet?</button>
         </div>
 
     </div>
@@ -119,7 +119,7 @@
         </div>
 
         <div class="mt-2">
-            <button class="btn btn-outline-secondary col-12" onclick="changeView();">Already have an Acc.? </button>
+            <button class="btn btn-outline-secondary col-12" onclick="changeView();">Already have an account?</button>
         </div>
 
     </div>

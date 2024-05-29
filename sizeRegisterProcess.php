@@ -1,21 +1,30 @@
 <?php
+
 include "connection.php";
 
-$sz = $_POST["sz"];
+$size = $_POST["sz"];
 
-if (empty($sz)) {
-    echo ("Please enter the Size name");
-} else if (strlen($sz) > 20) {
-    echo ("Your Size name should be less than 20 characters");
+if (empty($size)) {
+    echo("Please enter Size");
+} elseif(strlen($size ) > 20) {
+    echo("Should be more than 20 characters");
+}else{
+ 
+    // echo("success");
+
+$rs = Database::search("SELECT * FROM `size` WHERE `size_name` = '".$size."'");
+$num = $rs->num_rows;
+
+if ($num > 0) {
+    echo ("Your Size name is Already exist");
 } else {
-    $rs = Database::search("SELECT * FROM `Size` WHERE `size_name` = '" . $sz . "'");
-    $num = $rs->num_rows;
 
-    if ($num > 0) {
-        echo ("Your Size name already exists");
-    } else {
-        Database::iud("INSERT INTO `Size` (`size_name`) VALUES ('" . $sz . "')");
-        echo("Success");
-    }
+    Database::iud("INSERT INTO `size` (`size_name`) VALUES ('".$size."')");
+    echo("Success");
 }
+
+
+}
+
+
 ?>

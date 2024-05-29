@@ -17,6 +17,7 @@ if (isset($_SESSION["a"])) { ?>
     <body class="adminBody" onload="loadUser();">
         <!--Nav bar -->
         <?php include "adminNavBar.php"; ?>
+        <!--Nav bar -->
 
         <div class="col-10">
             <h2 class="text-center">User Management</h2>
@@ -58,6 +59,7 @@ if (isset($_SESSION["a"])) { ?>
         <div class="fixed-bottom col-12">
             <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved </p>
         </div>
+        <!--Footer-->
         <script src="script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
