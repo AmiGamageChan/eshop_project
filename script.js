@@ -339,14 +339,23 @@ function searchProduct(x){
   f.append("p",product.value);
   f.append("pg",page);
 
-  var request = XMLHttpRequest();
+  var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
     if (request.readyState == 4 && request.status == 200){
       var response = request.responseText;
-      alert(response);
+      document.getElementById("pid").innerHTML = response;
     }
   }
 
   request.open("POST", "searchProductProcess.php", true);
   request.send(f);
+}
+
+function viewFilter(){
+  var filter = document.getElementById("filterId");
+  if (filter.className === "d-block") {
+      filter.className = "d-none"; // Hide the filter
+  } else {
+      filter.className = "d-block"; // Show the filter
+  }
 }
