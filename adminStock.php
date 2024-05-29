@@ -149,7 +149,7 @@ if (isset($_SESSION["a"])) {
                     <h2 class="text-center">Stock Update</h2>
 
                     <div class="mb-3">
-                        <label class="form-label" for="">Product Name</label>
+                        <label class="form-label" id="selectProduct">Product Name</label>
                         <select class="form-select">
                             <option>Select</option>
                             <option>T-shirt</option>
@@ -157,18 +157,18 @@ if (isset($_SESSION["a"])) {
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="">Qty</label>
+                        <label class="form-label" id="qty">Qty</label>
                         <input type="text" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="">Unit price</label>
+                        <label class="form-label" id="uprice">Unit price</label>
                         <input type="text" class="form-control">
                     </div>
 
                     <div class="d-grid">
 
-                        <button class="btn btn-secondary">Update Stock</button>
+                        <button class="btn btn-primary" onclick="updateStock();">Update Stock</button>
 
                     </div>
 
@@ -185,6 +185,7 @@ if (isset($_SESSION["a"])) {
         <!-- Footer -->
 
         <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     </body>
 
     </html>

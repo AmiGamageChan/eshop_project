@@ -7,7 +7,7 @@ if (isset($_SESSION["a"])) {
     $rs = Database::search("SELECT * FROM `product` INNER JOIN `brand` ON `product`.`brand_id`=`brand`.`brand_id`
     INNER JOIN `color` ON `product`.`color_id`= `color`.`color_id`
     INNER JOIN `category` ON `product`.`category_id` = `category`.`cat_id`
-    INNER JOIN `size` ON `product`.`size_id`=`size`.`size_id` ORDER BY `product`.`id` ASC");
+    INNER JOIN `size` ON `product`.`size_id`=`size`.`size_id` ORDER BY `product`.`product_id` ASC");
 
     $num = $rs->num_rows;
 ?>
@@ -53,14 +53,14 @@ if (isset($_SESSION["a"])) {
 
                     ?>
                         <tr>
-                            <td><?php echo $d["id"] ?></td>
+                            <td><?php echo $d["product_id"] ?></td>
                             <td><?php echo $d["name"] ?></td>
                             <td><?php echo $d["brand_name"] ?></td>
                             <td><?php echo $d["cat_name"] ?></td>
                             <td><?php echo $d["color_name"] ?></td>
                             <td><?php echo $d["size_name"] ?></td>
                             <td><?php echo $d["description"] ?></td>
-                            <td><img src="<?php echo $d["path"]?>" height="25px"></td>
+                            <td><img src="<?php echo $d["path"]?>" height="80vh"></td>
                         </tr>
                     <?php
                     }

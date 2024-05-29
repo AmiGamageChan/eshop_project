@@ -2,12 +2,12 @@
 
 include "connection.php";
 
-$pname=$_POST["pname"];
-$brand=$_POST["brand"];
-$cat=$_POST["cat"];
-$size=$_POST["size"];
-$color=$_POST["color"];
-$desc=$_POST["desc"]; 
+$pname=$_POST["p"];
+$brand=$_POST["b"];
+$cat=$_POST["ca"];
+$size=$_POST["s"];
+$color=$_POST["co"];
+$desc=$_POST["d"]; 
 
 if(empty($pname)){
 

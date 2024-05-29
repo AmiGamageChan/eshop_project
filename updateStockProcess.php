@@ -7,16 +7,12 @@ $qty = $_POST["q"];
 $price = $_POST["up"];
 
 if (empty($qty)) {
-    echo ("Please enter qunntity");
-} else if (!is_numeric($qty)) {
-    echo ("Only numbers can be use for quantity");
-} else if (strlen($qty) > 10) {
+    echo ("Please enter quantity");
+}else if (strlen($qty) > 10) {
     echo ("your qty should be less than 10 characters");
 } else if (empty($price)) {
     echo ("Please enter price");
-} else if (!is_numeric($price)) {
-    echo ("Only numbers can be used");
-} else if (strlen($price) > 10) {
+}else if (strlen($price) > 10) {
     echo ("Your price should be less than 10 characters");
 } else {
     // echo ("succes");

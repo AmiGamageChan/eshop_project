@@ -17,43 +17,15 @@
     <!--Basic search-->
     <div class="container d-flex justify-content-end mt-5">
         <div class="col-3 mt-3">
-            <input type="text" class="form-control" placeholder="Product Name" />
+            <input type="text" class="form-control" placeholder="Product Name" id="product" onclick="searchProduct(0);"/>
         </div>
     </div>
     <!--Nav bar -->
 
     <!--Card Loading-->
-    <div class="row col-10 offset-1">
-        <div class="col-3 mt-5 d-flex justify-content-center">
-            <div class="card" style="width: 300px;">
-                <img class="card-img-top" src="Resources/Products/mooseFCN.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Product Name</h5>
-                    <p class="card-text">Description</p>
-                    <p class="card-text">Price</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-outline-primary col-6">Add to Cart</a>
-                        <a href="#" class="btn btn-outline-warning col-6 ms-2">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="row col-10 offset-1" id="pid">
 
-    <!--Pagination-->
-    <div class="d-flex justify-content-center mt-5">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
     </div>
-    <!--Pagination-->
-
     <!--Card Loading-->
 
 

@@ -254,7 +254,7 @@ function regProduct() {
   f.append("co", color.value);
   f.append("s", size.value);
   f.append("d", desc.value);
-  f.append("f", file.files[0]);
+  f.append("image", file.files[0]);
 
   // alert(cat.value);
 
@@ -291,6 +291,8 @@ function updateStock() {
       location.reload();
     }
   };
+  request.open("POST", "updateStockProcess.php", true);
+  request.send(f);
 }
 
 function printDiv(){
@@ -317,11 +319,34 @@ function loadProduct(x){
   request.onreadystatechange = function(){
     if(request.readyState == 4 && request.status == 200){
       var response = request.responseText;
-      alert(response);
+      // alert(response);
+      document.getElementById("pid").innerHTML = response;
     }
   };
 
   request.open("POST", "loadProductProcess.php", true);
   request.send(f);
 
+}
+
+function searchProduct(x){
+  var page = x;
+  var product = document.getElementById("product");
+  // alert(page);
+  // alert(product.value);
+
+  var f = new FormData();
+  f.append("p",product.value);
+  f.append("pg",page);
+
+  var request = XMLHttpRequest();
+  request.onreadystatechange = function(){
+    if (request.readyState == 4 && request.status == 200){
+      var response = request.responseText;
+      alert(response);
+    }
+  }
+
+  request.open("POST", "searchProductProcess.php", true);
+  request.send(f);
 }
