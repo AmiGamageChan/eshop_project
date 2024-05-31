@@ -68,7 +68,7 @@
                     <input type="text" class="form-control" placeholder="Max Price">
                 </div>
                 <div class="col-2">
-                    <button class="btn btn-outline-light form-control">Search</button>
+                    <button class="btn btn-outline-light form-control" onclick="advSearchProduct();">Search</button>
                 </div>
             </div>
         </div>

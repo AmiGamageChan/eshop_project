@@ -4,7 +4,7 @@ session_start();
 include "connection.php";
 
 if (isset($_SESSION["a"])) {
-    $rs = Database::search("SELECT * FROM `stock` INNER JOIN `product` ON `stock`.`product_id`= `product`. `product_id`");
+    $rs = Database::search("SELECT * FROM `stock` INNER JOIN `product` ON `stock`.`product_id`= `product`. `id`");
     $num = $rs->num_rows;
 
 

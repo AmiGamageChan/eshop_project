@@ -12,7 +12,7 @@ if (0 != $page) {
     $pageno = 1;
 }
 
-$q = "SELECT * FROM `stock` INNER JOIN `product` ON `stock`.`product_id` = `product`.`product_id` ORDER BY `stock`.`stock_id` ASC";
+$q = "SELECT * FROM `stock` INNER JOIN `product` ON `stock`.`product_id` = `product`.`id` ORDER BY `stock`.`stock_id` ASC";
 $rs = Database::search($q);
 $num = $rs->num_rows;
 //echo($num);
@@ -25,7 +25,7 @@ $page_results = ($pageno - 1) * $results_per_page;
 //echo($page_results);
 
 $q2 = "SELECT *FROM `stock`
-INNER JOIN `product` ON `stock`.`product_id` = `product`.`product_id`
+INNER JOIN `product` ON `stock`.`product_id` = `product`.`id`
 ORDER BY `stock`.`stock_id` ASC
 LIMIT $results_per_page OFFSET $page_results;";
 $rs2 = Database::search($q2);

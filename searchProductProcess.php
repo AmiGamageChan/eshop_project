@@ -10,7 +10,7 @@ if (isset($_POST["pg"]) && $_POST["pg"] != 0) {
 $product = $_POST["p"];
 
 $q = "SELECT * FROM `stock` 
-INNER JOIN `product` ON `stock`.`product_id` = `product`.`product_id` 
+INNER JOIN `product` ON `stock`.`product_id` = `product`.`id` 
 WHERE `product`.`name` LIKE '%$product%'";
 $rs = Database::search($q);
 $num = $rs->num_rows;
@@ -21,7 +21,7 @@ $num_of_pages = ceil($num / $results_per_page);
 $page_results = ($pageno - 1) * $results_per_page;
 
 $q2 = "SELECT * FROM `stock` 
-INNER JOIN `product` ON `stock`.`product_id` = `product`.`product_id` 
+INNER JOIN `product` ON `stock`.`product_id` = `product`.`id` 
 WHERE `product`.`name` LIKE '%$product%'
 LIMIT $results_per_page OFFSET $page_results";
 $rs2 = Database::search($q2);

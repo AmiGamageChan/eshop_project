@@ -359,3 +359,7 @@ function viewFilter(){
       filter.className = "d-block"; // Show the filter
   }
 }
+
+function advSearchProduct(x){
+  //
+}
