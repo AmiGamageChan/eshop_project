@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        body {
+            background-image: url('Resources/Img/background.jpg');
+            background-size:auto;
+            background-position: center;
+            /* Add blur effect */
+        }
+    </style>
     <title>OnlineStore</title>
 </head>
 
@@ -23,22 +31,22 @@
 
         if (isset($_COOKIE["username"])) {
             $username = $_COOKIE["username"];
-        } 
+        }
         if (isset($_COOKIE["password"])) {
             $password = $_COOKIE["password"];
         }
-        
+
 
         ?>
 
         <div class="mt-2">
             <label for="form-label">Username:</label>
-            <input type="text" class="form-control" id="un" value="<?php echo $username?>">
+            <input type="text" class="form-control" id="un" value="<?php echo $username ?>">
         </div>
 
         <div class="mt-2">
             <label for="form-label">Password:</label>
-            <input type="password" class="form-control" id="pw" value="<?php echo $password?>">
+            <input type="password" class="form-control" id="pw" value="<?php echo $password ?>">
         </div>
 
         <div class="mt-2 mb-2">
@@ -82,22 +90,22 @@
             </div>
         </div>
 
-    <div class="row">
+        <div class="row">
 
-    <div class="mt-2 col-6">
-            <label for="form-label">email</label>
-            <input type="text" class="form-control" id="email">
+            <div class="mt-2 col-6">
+                <label for="form-label">email</label>
+                <input type="text" class="form-control" id="email">
+            </div>
+
+            <div class="mt-2 col-6">
+                <label for="form-label">Mobile</label>
+                <input type="text" class="form-control" id="mobile">
+            </div>
+
+
         </div>
 
-    <div class="mt-2 col-6">
-            <label for="form-label">Mobile</label>
-            <input type="text" class="form-control" id="mobile">
-        </div>
 
-       
-    </div>
-
-        
 
         <div class="mt-2">
             <label for="form-label">User Name</label>
@@ -127,6 +135,7 @@
     </div>
     <!-- Sign Up -->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="script.js"></script>
 
 </body>

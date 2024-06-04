@@ -19,129 +19,109 @@ if (isset($_SESSION["a"])) {
     </head>
 
     <body class="adminBody">
-
         <?php
         include "adminNavBar.php";
         ?>
 
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top: 80px;">
 
             <div class="row">
-
                 <div class="col-5 offset-1">
 
                     <h2 class="text-center">Product Registration</h2>
 
                     <div class="mb-3">
-                        <label for="pname" class="form-label">Product Name</label>
-                        <input id="pname" type="text" class="form-control" />
+                        <label class="form-label" for="">Product Name</label>
+                        <input type="text" class="form-control" id="pname" placeholder="Enter Product Name">
                     </div>
 
                     <div class="row">
                         <div class="mb-3 col-6">
-                            <label class="form-label" for="brand">Brand</label>
-                            <select id="brand" class="form-select">
+                            <label class="form-label" for="">Brand</label>
+                            <select class="form-select" id="brand">
                                 <option value="0">Select</option>
+                                <?php 
+                                    $rs = Database::search("SELECT * FROM `brand`");
+                                    $num = $rs->num_rows;
 
-                                <?php
-
-                                $rs = Database::search("SELECT * FROM `brand`");
-                                $num = $rs->num_rows;
-
-                                for ($x = 0; $x < $num; $x++) {
-                                    $data = $rs->fetch_assoc();
+                                    for($i = 0; $i < $num; $i++){
+                                        $data = $rs->fetch_assoc();
+                                        ?>
+                                            <option value="<?php echo($data["brand_id"]);?>"><?php echo($data["brand_name"]);?></option>
+                                        <?php
+                                    }
+                                
                                 ?>
-                                    <option value="<?php echo($data["brand_id"]); ?>"><?php echo ($data["brand_name"]); ?></option>
-                                <?php
-                                }
-                                ?>
-
-                            </select>
-
-                        </div>
-
-                        <div class="mb-3 col-6">
-
-                            <label for="cat" class="form-label">Category</label>
-                            <select id="cat" class="form-select">
-                                <option value="0">Select</option>
-
-                                <?php
-
-                                $rs = Database::search("SELECT * FROM `category`");
-                                $num = $rs->num_rows;
-
-                                for ($x = 0; $x < $num; $x++) {
-                                    $data = $rs->fetch_assoc();
-                                ?>
-                                    <option id="cat" value="<?php echo($data["cat_id"]); ?>"><?php echo ($data["cat_name"]); ?></option>
-                                <?php
-                                }
-                                ?>
-
                             </select>
                         </div>
 
                         <div class="mb-3 col-6">
-
-                            <label for="color" class="form-label">Color</label>
-                            <select id="color" class="form-select">
+                            <label class="form-label" for="">Category</label>
+                            <select class="form-select" id="cat">
                                 <option value="0">Select</option>
+                                <?php 
+                                    $rs = Database::search("SELECT * FROM `category`");
+                                    $num = $rs->num_rows;
 
-                                <?php
-
-                                $rs = Database::search("SELECT * FROM `color`");
-                                $num = $rs->num_rows;
-
-                                for ($x = 0; $x < $num; $x++) {
-                                    $data = $rs->fetch_assoc();
+                                    for($i = 0; $i < $num; $i++){
+                                        $data = $rs->fetch_assoc();
+                                        ?>
+                                            <option value="<?php echo($data["cat_id"]);?>"><?php echo($data["cat_name"]);?></option>
+                                        <?php
+                                    }
+                                
                                 ?>
-                                    <option id="color" value="<?php echo($data["color_id"]); ?>"><?php echo ($data["color_name"]); ?></option>
-                                <?php
-                                }
-                                ?>
-
                             </select>
                         </div>
-
                         <div class="mb-3 col-6">
-
-                            <label for="size" class="form-label">Size</label>
-                            <select id="size" class="form-select">
+                            <label class="form-label" for="">color</label>
+                            <select class="form-select" id="color">
                                 <option value="0">Select</option>
-                                <?php
+                                <?php 
+                                    $rs = Database::search("SELECT * FROM `color`");
+                                    $num = $rs->num_rows;
 
-                                $rs = Database::search("SELECT * FROM `size`");
-                                $num = $rs->num_rows;
-
-                                for ($x = 0; $x < $num; $x++) {
-                                    $data = $rs->fetch_assoc();
-                                ?>
-                                    <option id="size" value="<?php echo($data["size_id"]); ?>"><?php echo ($data["size_name"]); ?></option>
-                                <?php
-                                }
+                                    for($i = 0; $i < $num; $i++){
+                                        $data = $rs->fetch_assoc();
+                                        ?>
+                                            <option value="<?php echo($data["color_id"]);?>"><?php echo($data["color_name"]);?></option>
+                                        <?php
+                                    }
+                                
                                 ?>
                             </select>
                         </div>
+                        <div class="mb-3 col-6">
+                            <label class="form-label" for="">size</label>
+                            <select class="form-select" id="size">
+                                <option value="0">Select</option>
+                                <?php 
+                                    $rs = Database::search("SELECT * FROM `size`");
+                                    $num = $rs->num_rows;
 
+                                    for($i = 0; $i < $num; $i++){
+                                        $data = $rs->fetch_assoc();
+                                        ?>
+                                            <option value="<?php echo($data["size_id"]);?>"><?php echo($data["size_name"]);?></option>
+                                        <?php
+                                    }
+                                
+                                ?>
+                            </select>
+                        </div>
                     </div>
-
+                    
                     <div class="mb-3">
-
-                        <label class="form-label" for="desc">Description</label>
-                        <textarea id="desc" class="form-control"></textarea>
-
+                        <label class="form-label" for="">Description</label>
+                        <textarea class="form-control" id="desc"></textarea>
                     </div>
-
                     <div class="mb-3">
-                        <label class="form-form-label" for="file">Product Image</label>
-                        <input id="file" class="form-control" type="file">
+                        <label class="form-label" for="">Product Image</label>
+                        <input id="file" class="form-control" type="file" multiple>
                     </div>
-
                     <div class="d-grid">
-                        <button class="btn btn-secondary" onclick="regProduct()";>Register Product</button>
+                        <button class="btn btn-success" onclick="regProduct();">Register Product</button>
                     </div>
-
                 </div>
 
                 <div class="col-5">
@@ -149,27 +129,36 @@ if (isset($_SESSION["a"])) {
                     <h2 class="text-center">Stock Update</h2>
 
                     <div class="mb-3">
-                        <label class="form-label" id="selectProduct">Product Name</label>
-                        <select class="form-select">
+                        <label class="form-label">Product Name</label>
+                        <select class="form-control form-select" id="selectProduct">
                             <option>Select</option>
-                            <option>T-shirt</option>
+                            <?php 
+                            $rs = Database::search("SELECT * FROM `product`");
+                            $num = $rs->num_rows;
+
+                            for ($i = 0; $i < $num; $i++) {
+                                $d = $rs->fetch_assoc();
+                            ?>
+                                <option value="<?php echo ($d["id"]); ?>"><?php echo ($d["name"]); ?></option>
+                            <?php
+                            }
+                            
+                            ?>
                         </select>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" id="qty">Qty</label>
-                        <input type="text" class="form-control">
+                        <label class="form-label" for="">Qty</label>
+                        <input class="form-control" type="text" id="qty"/>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" id="uprice">Unit price</label>
-                        <input type="text" class="form-control">
+                        <label for="" class="form-label">Unit Price</label>
+                        <input type="text" class="form-control" id="uprice">
                     </div>
 
                     <div class="d-grid">
-
-                        <button class="btn btn-primary" onclick="updateStock();">Update Stock</button>
-
+                        <div class="btn btn-info" onclick="updateStock();">Update Stock</div>
                     </div>
 
                 </div>
@@ -178,23 +167,22 @@ if (isset($_SESSION["a"])) {
 
         </div>
 
-        <!-- Footer -->
+        <!-- footer -->
         <div class="fixed-bottom col-12">
-            <p class="text-center">&copy; 2024 OnlineStore.lk || All Right Reserved</p>
+            <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved</p>
         </div>
-        <!-- Footer -->
-
-        <script src="script.js"></script>
+        <!-- footer -->
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="script.js"></script>
     </body>
 
     </html>
 
 <?php
-
 } else {
-
-    echo ("you're not an admin");
+    echo ("You're not an admin");
 }
 
 ?>

@@ -22,26 +22,27 @@ if (isset($_SESSION["a"])) {
         <title>User Report</title>
     </head>
 
-    <body>
-        <div class="container mt-3">
-            <a href="adminReport.php"><img src="Resources/img/backicon.png" height="25" /></a>
+    <div class="container mt-3">
+        <div>
+            <a class="img-fluid" href="adminReport.php"><img src="Resources/img/backicon.svg" height="90px" /></a>
         </div>
 
-        <div class="container mt-3">
-
+        <div class="container mt-3" id="printArea">
             <h2 class="text-center">User Report</h2>
+
+
 
             <table class="table table-hover mt-5">
 
                 <thead>
                     <tr>
-                        <th>User Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Mobile No</th>
-                        <th>User Type</th>
-                        <th>Status</th>
+                        <th class="center-vertical">User Id</th>
+                        <th class="center-vertical">First Name</th>
+                        <th class="center-vertical">Last Name</th>
+                        <th class="center-vertical">Email</th>
+                        <th class="center-vertical">Mobile No</th>
+                        <th class="center-vertical">User Type</th>
+                        <th class="center-vertical">Status</th>
                     </tr>
                 </thead>
 
@@ -52,23 +53,23 @@ if (isset($_SESSION["a"])) {
 
                     ?>
                         <tr>
-                            <td><?php echo $d["id"] ?></td>
-                            <td><?php echo $d["fname"] ?></td>
-                            <td><?php echo $d["lname"] ?></td>
-                            <td><?php echo $d["email"] ?></td>
-                            <td><?php echo $d["mobile"] ?></td>
-                            <td><?php
-                                if ($d["user_type_id"] == 1) {
-                                    echo ("Admin");
-                                } else
-                                    echo ("User");
-                                ?></td>
-                            <td><?php
-                                if ($d["status"] == 1) {
-                                    echo ("Active");
-                                } else
-                                    echo ("Inactive");
-                                ?></td>
+                            <td class="center-vertical"><?php echo $d["id"] ?></td>
+                            <td class="center-vertical"><?php echo $d["fname"] ?></td>
+                            <td class="center-vertical"><?php echo $d["lname"] ?></td>
+                            <td class="center-vertical"><?php echo $d["email"] ?></td>
+                            <td class="center-vertical"><?php echo $d["mobile"] ?></td>
+                            <td class="center-vertical"><?php
+                                                        if ($d["user_type_id"] == 1) {
+                                                            echo ("Admin");
+                                                        } else
+                                                            echo ("User");
+                                                        ?></td>
+                            <td class="center-vertical"><?php
+                                                        if ($d["status"] == 1) {
+                                                            echo ("Active");
+                                                        } else
+                                                            echo ("Inactive");
+                                                        ?></td>
                         </tr>
                     <?php
                     }
@@ -80,10 +81,12 @@ if (isset($_SESSION["a"])) {
         </div>
 
         <div class="d-flex justify-content-end container mt-5">
-            <button class="btn btn-outline-warning col-2" onclick="window.print();">Print </button>
+            <button class="btn btn-outline-warning col-2" onclick="printDiv('printArea');">Print</button>
         </div>
 
-    </body>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="script.js"></script>
+        </body>
 
     </html>
 

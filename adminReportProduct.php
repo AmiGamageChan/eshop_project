@@ -23,26 +23,27 @@ if (isset($_SESSION["a"])) {
     </head>
 
     <body>
-        <div class="container mt-3">
-            <a href="adminReport.php"><img src="Resources/img/backicon.png" height="25px" /></a>
-        </div>
+
 
         <div class="container mt-3">
+            <div>
+                <a class="img-fluid" href="adminReport.php"><img src="Resources/img/backicon.svg" height="100px" /></a>
+                <h2 class="text-center">Product Report</h2>
+            </div>
 
-            <h2 class="text-center">Product Report</h2>
 
             <table class="table table-hover mt-5">
 
                 <thead>
                     <tr>
-                        <th>Product Id</th>
-                        <th>Product Name</th>
-                        <th>Brand Name</th>
-                        <th>Category</th>
-                        <th>Color</th>
-                        <th>Size</th>
-                        <th>Description</th>
-                        <th>Image</th>
+                        <th class="center-vertical">Product Id</th>
+                        <th class="center-vertical">Product Name</th>
+                        <th class="center-vertical">Brand Name</th>
+                        <th class="center-vertical">Category</th>
+                        <th class="center-vertical">Color</th>
+                        <th class="center-vertical">Size</th>
+                        <th class="center-vertical">Description</th>
+                        <th class="center-vertical">Image</th>
                     </tr>
                 </thead>
 
@@ -53,14 +54,14 @@ if (isset($_SESSION["a"])) {
 
                     ?>
                         <tr>
-                            <td><?php echo $d["id"] ?></td>
-                            <td><?php echo $d["name"] ?></td>
-                            <td><?php echo $d["brand_name"] ?></td>
-                            <td><?php echo $d["cat_name"] ?></td>
-                            <td><?php echo $d["color_name"] ?></td>
-                            <td><?php echo $d["size_name"] ?></td>
-                            <td><?php echo $d["description"] ?></td>
-                            <td><img src="<?php echo $d["path"]?>" height="80vh"></td>
+                            <td class="center-vertical"><?php echo $d["id"] ?></td>
+                            <td class="center-vertical"><?php echo $d["name"] ?></td>
+                            <td class="center-vertical"><?php echo $d["brand_name"] ?></td>
+                            <td class="center-vertical"><?php echo $d["cat_name"] ?></td>
+                            <td class="center-vertical"><?php echo $d["color_name"] ?></td>
+                            <td class="center-vertical"><?php echo $d["size_name"] ?></td>
+                            <td class="center-vertical"><?php echo $d["description"] ?></td>
+                            <td class="center-vertical"><img src="<?php echo $d["path"] ?>" height="80vh"></td>
                         </tr>
                     <?php
                     }

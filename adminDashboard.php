@@ -24,12 +24,13 @@ if (isset($_SESSION["a"])) { ?>
 
             <div class="row d-flex justify-content-end mt-4">
                 <div>
-                    <div class="alert alert-danger d-none"></div>
+                <div class="d-none" id="msgDiv" onclick="reload();"></div>
+                <div class="d-none alert alert-danger" id="msg"></div>
                 </div>
                 <div class="col-2">
-                    <input type="text" class="form-control" placeholder="User ID"/>
+                    <input type="text" class="form-control" placeholder="User ID" id="uid"/>
                 </div>
-                <button class="btn btn-outline-danger col-2">Change Status</button>
+                <button class="btn btn-outline-danger col-2" onclick="updateUserStatus();">Change Status</button>
             </div>
 
             <div class="mt-3">
@@ -60,6 +61,7 @@ if (isset($_SESSION["a"])) { ?>
             <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved </p>
         </div>
         <!--Footer-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>

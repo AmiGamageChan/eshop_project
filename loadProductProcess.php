@@ -2,55 +2,51 @@
 
 include "connection.php";
 
-$pageno = 0;
-$page = $_POST["p"];
-//echo($page);
-
-if (0 != $page) {
-    $pageno = $page;
-} else {
-    $pageno = 1;
+$pageno = 1; // Default page number
+if (isset($_POST["p"])) {
+    $page = $_POST["p"];
+    if (is_numeric($page) && $page > 0) {
+        $pageno = $page;
+    }
 }
 
 $q = "SELECT * FROM `stock` INNER JOIN `product` ON `stock`.`product_id` = `product`.`id` ORDER BY `stock`.`stock_id` ASC";
 $rs = Database::search($q);
 $num = $rs->num_rows;
-//echo($num);
 
 $results_per_page = 4;
 $num_of_pages = ceil($num / $results_per_page);
-//echo($num_of_pages);
 
 $page_results = ($pageno - 1) * $results_per_page;
-//echo($page_results);
 
-$q2 = "SELECT *FROM `stock`
+$q2 = "SELECT * FROM `stock`
 INNER JOIN `product` ON `stock`.`product_id` = `product`.`id`
 ORDER BY `stock`.`stock_id` ASC
 LIMIT $results_per_page OFFSET $page_results;";
 $rs2 = Database::search($q2);
 $num2 = $rs2->num_rows;
-//echo($num2);
 
 if ($num2 == 0) {
-    //Not available stock
+    // Not available stock
     echo ("No Product Here...");
 } else {
-    //Load Stock
+    // Load Stock
     for ($i = 0; $i < $num2; $i++) {
         $d = $rs2->fetch_assoc();
 ?>
+
         <!--Card Loading-->
         <div class="col-3 mt-5 d-flex justify-content-center">
             <div class="card" style="width: 300px;">
-                <img class="card-img-top" src="<?php echo $d["path"]; ?>" alt="Card image cap">
+                <a href="singleProductView.php?s=<?php echo $d["product_id"]; ?>"><img src="<?php echo $d["path"] ?>" class="card-img-top"></a>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $d["name"]; ?></h5>
                     <p class="card-text"><?php echo $d["description"]; ?></p>
                     <p class="card-text"><?php echo $d["price"]; ?></p>
+                    <p class="card-text d-none" id="qty">1</p>
                     <div class="d-flex justify-content-center">
-                        <a href="#" class="btn btn-outline-primary col-6">Add to Cart</a>
-                        <a href="#" class="btn btn-outline-warning col-6 ms-2">Buy Now</a>
+                        <button class="btn btn-outline-primary col-6" onclick="window.location.href='cart.php'">Add to Cart</button>
+                        <button class="btn btn-outline-warning col-6 ms-2" id="payhere-payment" onclick="buyNow(<?php echo $d['stock_id']; ?>);">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -63,13 +59,9 @@ if ($num2 == 0) {
     <div class="d-flex justify-content-center mt-5">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" <?php
-                                                            if ($pageno <= 1) {
-                                                                echo ("#");
-                                                            } else {
-                                                            ?> onclick="loadProduct(<?php echo ($pageno - 1); ?>);" <?php
-                                                                                                                }
-                                                                                                                    ?>>Previous</a></li>
+                <li class="page-item"><a class="page-link" <?php if ($pageno <= 1) {
+                                                                echo "href='#'";
+                                                            } else { ?> onclick="loadProduct(<?php echo ($pageno - 1); ?>);" <?php } ?>>Previous</a></li>
 
                 <?php
                 for ($y = 1; $y <= $num_of_pages; $y++) {
@@ -85,17 +77,17 @@ if ($num2 == 0) {
                 }
                 ?>
 
-                <li class="page-item"><a class="page-link" <?php
-                                                            if ($pageno >= $num_of_pages) {
-                                                                echo ("#");
-                                                            } else {
-                                                            ?> onclick="loadProduct(<?php echo ($pageno + 1); ?>);" <?php
-                                                                                                                }
-                                                                                                                    ?>>Next</a></li>
+                <li class="page-item"><a class="page-link" <?php if ($pageno >= $num_of_pages) {
+                                                                echo "href='#'";
+                                                            } else { ?> onclick="loadProduct(<?php echo ($pageno + 1); ?>);" <?php } ?>>Next</a></li>
             </ul>
         </nav>
     </div>
     <!--Pagination-->
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
 <?php
 }
 ?>

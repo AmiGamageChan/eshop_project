@@ -28,6 +28,10 @@
         <li class="new-item me-4">
             <a class="nav-link active" aria-current="page" href="adminReport.php">Reports</a>
         </li>
+
+        <li class="new-item me-4">
+                <button class="btn form-control btn-danger" aria-current="page" onclick="adminSignOut();">Signout</button>
+        </li>
       </ul>   
     </div>
   </div>

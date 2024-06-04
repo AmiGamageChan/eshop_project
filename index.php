@@ -10,6 +10,7 @@
 </head>
 
 <body onload="loadProduct(0);">
+
     <!--Nav bar -->
     <?php include "NavBar.php"; ?>
     <!--Nav bar -->
@@ -67,28 +68,31 @@
                 <div class="col-5">
                     <input type="text" class="form-control" placeholder="Max Price">
                 </div>
-                <div class="col-2">
-                    <button class="btn btn-outline-light form-control" onclick="advSearchProduct();">Search</button>
+                <div class="col-12 d-flex justify-content-center align-items-center mt-4">
+                    <button class="btn btn-outline-light col-lg-3 col-sm-4 col-md-4 " onclick="advSearchProduct(0);"> Search</button>
                 </div>
             </div>
         </div>
     </div>
-        <!--Advanced search-->
+    <!--Advanced search-->
 
-        <!--Card Loading-->
-        <div class="row col-10 offset-1" id="pid">
+    <!--Card Loading-->
+    <div class="row col-10 offset-1" id="pid">
 
-        </div>
-        <!--Card Loading-->
+    </div>
+    <!--Card Loading-->
 
 
-        <!--Footer-->
-        <div class="col-12 mt-3">
-            <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved </p>
-        </div>
-        <!--Footer-->
-        <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <!--Footer-->
+    <div class="col-12 mt-3">
+        <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved </p>
+    </div>
+    <!--Footer-->
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

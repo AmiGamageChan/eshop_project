@@ -23,10 +23,10 @@ if (isset($_SESSION["a"])) {
 
     <body>
         <div class="container mt-3">
-            <a href="adminReport.php"><img src="Resources/img/backicon.png" height="25" /></a>
+            <a href="adminReport.php"><img src="Resources/img/backicon.svg" height="90px" /></a>
         </div>
 
-        <div class="container mt-3">
+        <div class="container mt-3" id="printArea">
 
             <h2 class="text-center">Stock Report</h2>
 
@@ -34,10 +34,10 @@ if (isset($_SESSION["a"])) {
 
                 <thead>
                     <tr>
-                        <th>Stock Id</th>
-                        <th>Product Name</th>
-                        <th>Stock qty</th>
-                        <th>unit price</th>
+                        <th class="center-vertical">Stock Id</th>
+                        <th class="center-vertical">Product Name</th>
+                        <th class="center-vertical">Stock qty</th>
+                        <th class="center-vertical">unit price</th>
                     </tr>
                 </thead>
 
@@ -48,10 +48,10 @@ if (isset($_SESSION["a"])) {
 
                     ?>
                         <tr>
-                            <td><?php echo $d["stock_id"] ?></td>
-                            <td><?php echo $d["name"] ?></td>
-                            <td><?php echo $d["qty"] ?></td>
-                            <td><?php echo $d["price"] ?></td>
+                            <td class="center-vertical"><?php echo $d["stock_id"] ?></td>
+                            <td class="center-vertical"><?php echo $d["name"] ?></td>
+                            <td class="center-vertical"><?php echo $d["qty"] ?></td>
+                            <td class="center-vertical"><?php echo $d["price"] ?></td>
                         </tr>
                     <?php
                     }
@@ -63,9 +63,11 @@ if (isset($_SESSION["a"])) {
         </div>
 
         <div class="d-flex justify-content-end container mt-5">
-            <button class="btn btn-outline-warning col-2" onclick="window.print();">Print </button>
+            <button class="btn btn-outline-warning col-2" onclick="printDiv('printArea');">Print</button>
         </div>
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="script.js"></script>
     </body>
 
     </html>

@@ -28,7 +28,7 @@ if (empty($fname)) {
 } else if((empty($mobile))){
     echo("please enter your mobile ");
 }else if((strlen($mobile) != 10)){
-    echo("Incorect number");
+    echo("Mobile Number should be 10 numbers");
 }elseif(!preg_match("/07[0,1,2,4,5,6,7,8]{1}[0-9]{7}/",$mobile)){
     echo("Not valid number");
 }elseif (empty($username)) {
@@ -48,8 +48,8 @@ if (empty($fname)) {
     }else{
 
         Database::iud("INSERT INTO `user`
-        (`fname`,`lname`,`email`,`mobile`,`username`,`password`,`user_type_id`) VALUES 
-        ('".$fname."','".$lname."','".$email."','".$mobile."','".$username."','".$password."','2')");
+        (`fname`,`lname`,`email`,`mobile`,`username`,`password`,`status`,`user_type_id`) VALUES 
+        ('".$fname."','".$lname."','".$email."','".$mobile."','".$username."','".$password."','1','2')");
 
         echo ("success");
     }

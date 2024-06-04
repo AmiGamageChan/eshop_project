@@ -10,7 +10,7 @@ $rememberme = $_POST["r"];
 // 
 
 if (empty($username)) {
-    echo ("please enter Username...");
+    echo ("Please enter your Username");
 } else if (empty($password)) {
     echo ("Please enter your password");
 } else {
@@ -27,13 +27,12 @@ if (empty($username)) {
 
             if ($rememberme == "true") {
                 //set cookie
-
                 setcookie("username",$username,time()+(60*60*24*365));
                 setcookie("password",$password,time()+(60*60*24*365));
 
 
             } else {
-                //destroy cokkie
+                //destroy cookie
                 setcookie("username","",-1);
                 setcookie("password","",-1);
             }
