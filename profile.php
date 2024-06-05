@@ -11,7 +11,7 @@ if (isset($_SESSION["u"])) {
 
 ?>
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
@@ -19,10 +19,10 @@ if (isset($_SESSION["u"])) {
         <link rel="stylesheet" href="bootstrap.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="style.css" />
-        <title>online store</title>
+        <title>Fashion Haven</title>
     </head>
 
-    <body>
+    <body class="quick-font">
         <?php include "NavBar.php" ?>
 
         <div class="adminBody">
@@ -35,11 +35,11 @@ if (isset($_SESSION["u"])) {
                                     } else {
                                         echo ("Resources/profile.png");
                                     }
-                                    ?>" height="150px">
+                                    ?>" height="300px">
                     </div>
                     <div class="mt-3">
                         <label for="from-label">Profile Image</label>
-                        <input type="file" class="form-control" id="imgUploader"/>
+                        <input type="file" class="form-control" id="imgUploader" />
                     </div>
                     <div>
                         <button class="btn btn-outline-warning col-12 mt-4" onclick="uploadImg();">Upload</button>
@@ -51,49 +51,56 @@ if (isset($_SESSION["u"])) {
                     <div class="row mt-3">
                         <div class="col-6">
                             <label for="form-label">First Name</label>
-                            <input type="text" class="form-control" value="<?php echo $d["fname"]?>" id="fname"/>
+                            <input type="text" class="form-control" value="<?php echo $d["fname"] ?>" id="fname" />
                         </div>
                         <div class="col-6">
                             <label for="form-label">First Name</label>
-                            <input type="text" class="form-control" value="<?php echo $d["lname"]?>" id="lname"/>
+                            <input type="text" class="form-control" value="<?php echo $d["lname"] ?>" id="lname" />
                         </div>
                     </div>
 
                     <div class="mt-3">
                         <label for="form-label">Email</label>
-                        <input type="text" class="form-control" value="<?php echo $d["email"]?>" id="email">
+                        <input type="text" class="form-control" value="<?php echo $d["email"] ?>" id="email">
                     </div>
                     <div class="mt-3">
                         <label for="form-label">Mobile</label>
-                        <input type="text" class="form-control" value="<?php echo $d["mobile"]?>" id="mobile">
+                        <input type="text" class="form-control" value="<?php echo $d["mobile"] ?>" id="mobile">
                     </div>
                     <div class="mt-3">
                         <label for="form-label">Username</label>
-                        <input type="text" class="form-control" value="<?php echo $d["username"]?>" disabled>
+                        <input type="text" class="form-control" value="<?php echo $d["username"] ?>" disabled>
                     </div>
                     <div class="mt-3">
                         <label for="form-label">Password</label>
-                        <input type="password" class="form-control" value="<?php echo $d["password"]?>" id="pw">
+                        <input type="password" class="form-control" value="<?php echo $d["password"] ?>" id="pw">
                     </div>
                     <h5 class="mt-3">Shipping Address</h5>
 
                     <div class="row mt-3">
+                        <div class="col-3 d-none">
+                            <label for="form-label">ID: </label>
+                            <input type="text" class="form-control" id="uid" value="<?php echo $d["id"] ?>">
+                        </div>
                         <div class="col-3">
                             <label for="form-label">No:</label>
-                            <input type="text" class="form-control" id="no" value="<?php echo $d["no"]?>">
+                            <input type="text" class="form-control" id="no" value="<?php echo $d["no"] ?>">
                         </div>
                         <div class="col-9">
                             <label for="form-label">Line 01:</label>
-                            <input type="text" class="form-control" id="no" value="<?php echo $d["line_1"]?>">
+                            <input type="text" class="form-control" id="no" value="<?php echo $d["line_1"] ?>">
                         </div>
                         <div class="col-12">
                             <label for="form-label">Line 02:</label>
-                            <input type="text" class="form-control" id="no" value="<?php echo $d["line_2"]?>">
+                            <input type="text" class="form-control" id="no" value="<?php echo $d["line_2"] ?>">
                         </div>
                     </div>
                     <div class="mt-3">
                         <button class="btn btn-outline-warning col-12" onclick="updateData();">Update</button>
                     </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-outline-danger col-12" onclick="userDelete();">Delete Account ⚠️</button>
                 </div>
             </div>
         </div>
@@ -104,17 +111,15 @@ if (isset($_SESSION["u"])) {
         <!-- footer -->
 
         <div class=" col-12 mt-3">
-            <p class="text-center">&copy; 2024 OnlineStore.lk || All Right Reserved</p>
+            <p class="text-center fixed-bottom">&copy; 2024 OnlineStore.lk || All Right Reserved</p>
         </div>
 
         <!-- footer -->
 
 
-
-
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     </body>
 
     </html>

@@ -7,17 +7,17 @@ if (isset($_SESSION["u"])) {
 
 ?>
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap.css">
         <link rel="stylesheet" href="style.css">
-        <title>Online Store - Shopping Cart</title>
+        <title>Fashion Haven - Shopping Cart</title>
     </head>
 
-    <body onload="loadCart();">
+    <body onload="loadCart();" class="quick-font">
         <!--Nav bar -->
         <?php include "NavBar.php"; ?>
         <!--Nav bar -->
@@ -35,7 +35,7 @@ if (isset($_SESSION["u"])) {
 
         <!--Footer-->
         <div class="col-12 mt-3">
-            <p class="text-center fixed-bottom">&copy; 2024 Online Store.lk || All Right Reserved </p>
+            <p class="text-center fixed-bottom">&copy; 2024 Fashion Haven || All Right Reserved </p>
         </div>
         <!--Footer-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

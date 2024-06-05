@@ -24,11 +24,14 @@ if ($num > 0) {
     </div>
 
     <?php
+    //number of items
+    $number = 0;
 
     for ($i = 0; $i < $num; $i++) {
         $d = $rs->fetch_assoc();
         $total = $d["price"] * $d["cart_qty"];
         $netTotal += $total;
+        $number += $d["cart_qty"];
 
     ?>
         <!-- Card Items -->
@@ -57,7 +60,6 @@ if ($num > 0) {
         <!-- Card Items -->
     <?php
     }
-
     ?>
 
     <div class="col-12 mt-4">
@@ -66,10 +68,10 @@ if ($num > 0) {
 
     <!-- Checkouts -->
     <div class="d-flex flex-column align-items-end">
-        <h6>Number of Items: <span class="text-info"><?php echo $num; ?></span></h6>
+        <h6>Number of Items: <span class="text-info"><?php echo $number ?></span></h6>
         <h5>Delivary Fee: <span class="text-muted">Rs.500</span></h5>
         <h3>Net Total: <span class="text-warning">Rs.<?php echo ($netTotal + 500); ?></span></h3>
-        <button class="btn btn-success col-3 mt-3 mb-4" onclick="checkOut(<?php echo $d["stock_id"]; ?>);" id="payhere-payment">Checkout</button>
+        <button class="btn btn-success col-3 mt-3 mb-4" id="payhere-payment" onclick="checkOut();">Checkout</button>
     </div>
     <!-- Checkouts -->
 <?php
@@ -77,15 +79,18 @@ if ($num > 0) {
 } else {
 
 ?>
-    <div class="col-12 text-center mt-5">
-        <h2>Your Cart is Empty!</h2>
-        <a href="index.php" class="btn btn-primary">Start Shopping</a>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="col-12 text-center">
+            <img src="Resources/img/sad.svg" alt="Empty Cart" class="img-fluid w-50 mb-4">
+            <h2>Your Cart is Empty!</h2>
+            <a href="index.php" class="btn btn-primary">Start Shopping</a>
+        </div>
     </div>
-    </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <?php
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-<?php
-
+    
 }

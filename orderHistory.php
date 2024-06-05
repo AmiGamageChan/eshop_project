@@ -7,17 +7,17 @@ if (isset($user)) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="bootstrap.css">
         <link rel="stylesheet" href="style.css">
-        <title>Online Store - Order History</title>
+        <title>Fashion Haven - Order History</title>
     </head>
 
-    <body>
+    <body class="quick-font">
         <!--Nav bar -->
         <?php include "NavBar.php"; ?>
         <!--Nav bar -->
@@ -86,16 +86,26 @@ if (isset($user)) {
                     }
                 } else {
                     ?>
-                    <div class="col-12 text-center mt-5">
-                        <h2>You have not placed any orders yet!</h2>
-                        <a href="index.php" class="btn btn-primary">Shop Now</a>
+                    <div class="container d-flex justify-content-center align-items-center vh-100">
+                        <div class="col-12 text-center">
+                            <img src="Resources/img/sad.svg" alt="Empty Cart" class="img-fluid w-50 mb-4">
+                            <h2>You have not placed any orders yet!</h2>
+                            <a href="index.php" class="btn btn-primary">Shop Now</a>
+                        </div>
                     </div>
+
                 <?php
                 }
 
                 ?>
             </div>
         </div>
+
+        <!--Footer-->
+        <div class="col-12 mt-3">
+            <p class="text-center fixed-bottom">&copy; 2024 Fashion Haven || All Right Reserved </p>
+        </div>
+        <!--Footer-->
 
         <script src="script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>

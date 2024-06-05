@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 
-<body class="adminSignInBody">
+<body class="adminSignInBody quick-font">
 
     <div class="adminSignInBox" id="AdminSI">
         <h2>Admin Login</h2>
@@ -29,7 +29,11 @@
         </div>
 
         <div>
-            <button class="btn btn-secondary col-12" onclick="adminSignIn();">Sign In</button>
+            <button class="btn btn-success col-12" onclick="adminSignIn();">Sign In</button>
+        </div>
+
+        <div>
+            <a class="btn bg-transparent pointer-event col-12" href="signIn.php">Go To User Login Portal</a>
         </div>
 
     </div>

@@ -21,7 +21,7 @@ if (isset($_SESSION["a"])) {
         <title>Stock Report</title>
     </head>
 
-    <body>
+    <body class="quick-font">
         <div class="container mt-3">
             <a href="adminReport.php"><img src="Resources/img/backicon.svg" height="90px" /></a>
         </div>

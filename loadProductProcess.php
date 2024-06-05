@@ -34,23 +34,26 @@ if ($num2 == 0) {
     for ($i = 0; $i < $num2; $i++) {
         $d = $rs2->fetch_assoc();
 ?>
-
         <!--Card Loading-->
         <div class="col-3 mt-5 d-flex justify-content-center">
-            <div class="card" style="width: 300px;">
-                <a href="singleProductView.php?s=<?php echo $d["product_id"]; ?>"><img src="<?php echo $d["path"] ?>" class="card-img-top"></a>
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $d["name"]; ?></h5>
-                    <p class="card-text"><?php echo $d["description"]; ?></p>
-                    <p class="card-text"><?php echo $d["price"]; ?></p>
-                    <p class="card-text d-none" id="qty">1</p>
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-outline-primary col-6" onclick="window.location.href='cart.php'">Add to Cart</button>
+            <div class="card" style="vw:25%">
+                <a href="singleProductView.php?s=<?php echo $d['product_id']; ?>"><img src="<?php echo $d['path']; ?>" class="card-img-top"></a>
+                <div class="card-body d-flex flex-column justify-content-between text-center">
+                    <div class="mb-3">
+                        <h5 class="card-title"><?php echo $d['name']; ?></h5>
+                        <p class="card-text"><?php echo $d['description']; ?></p>
+                        <p class="card-text"><?php echo $d['price']; ?></p>
+                        <!-- <p class="card-text"><?php echo $d['id']; ?></p> -->
+                        <p class="card-text d-none" id="qty-<?php echo $d['id']; ?>">1</p>
+                    </div>
+                    <div class="d-flex justify-content-between mt-auto">
+                        <button class="btn btn-outline-primary col-6" onclick="addtoCartIndex(<?php echo $d['id']; ?>);">Add to Cart</button>
                         <button class="btn btn-outline-warning col-6 ms-2" id="payhere-payment" onclick="buyNow(<?php echo $d['stock_id']; ?>);">Buy Now</button>
                     </div>
                 </div>
             </div>
         </div>
+
         <!--Card Loading-->
     <?php
     }
@@ -59,7 +62,7 @@ if ($num2 == 0) {
     <div class="d-flex justify-content-center mt-5">
         <nav aria-label="Page navigation example">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" <?php if ($pageno <= 1) {
+                <li class="page-item"><a class="page-link flex-column" <?php if ($pageno <= 1) {
                                                                 echo "href='#'";
                                                             } else { ?> onclick="loadProduct(<?php echo ($pageno - 1); ?>);" <?php } ?>>Previous</a></li>
 

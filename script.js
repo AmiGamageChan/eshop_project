@@ -454,6 +454,52 @@ function updateUserStatus() {
 }
 // Admin Processes
 
+function userDelete() {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      var id = document.getElementById("uid");
+
+      var f = new FormData();
+      f.append("id", id.value);
+
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          var response = request.responseText;
+          if (response == "Success") {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your Account has been deleted.",
+              icon: "success",
+            }).then(() => {
+              // Delay
+              setTimeout(() => {
+                window.location = "signIn.php";
+              }, 2000);
+            });
+          } else {
+            Swal.fire({
+              title: "Error!",
+              text: response,
+              icon: "error",
+            });
+          }
+        }
+      };
+      request.open("POST", "deleteUserProcess.php", true);
+      request.send(f);
+    }
+  });
+}
+
 function printDiv(areaId) {
   var originalContent = document.body.innerHTML;
   var printArea = document.getElementById(areaId).innerHTML;
@@ -586,6 +632,43 @@ function addtoCart(x) {
   }
 }
 
+function addtoCartIndex(productId) {
+  var qtyElement = document.getElementById("qty-" + productId);
+  var qty = qtyElement ? qtyElement.innerText : 1;
+
+  if (productId) {
+    var f = new FormData();
+    f.append("id", productId);
+    f.append("qty", qty); // Include the quantity
+
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+      if (request.readyState == 4 && request.status == 200) {
+        var response = request.responseText;
+        if (response === "Success") {
+          Swal.fire({
+            title: "Success!",
+            text: "Cart item added successfully!",
+            icon: "success",
+          });
+        } else if (response === "Stock exceeded") {
+          Swal.fire("Error", "Stock exceeded!", "error");
+        } else if (response === "No stock") {
+          Swal.fire("Error", "No stock available!", "error");
+        } else if (response === "Invalid quantity") {
+          Swal.fire("Error", "Invalid quantity!", "error");
+        } else {
+          Swal.fire("Error", "Item already in cart or other error!", "error");
+        }
+      }
+    };
+    request.open("POST", "addtoCartIndexProcess.php", true);
+    request.send(f);
+  } else {
+    Swal.fire("Error", "ID not found!", "error");
+  }
+}
+
 function loadCart() {
   var request = new XMLHttpRequest();
   request.onreadystatechange = function () {
@@ -595,7 +678,7 @@ function loadCart() {
     }
   };
 
-  request.open("POST", "loadCartprocess.php", true);
+  request.open("POST", "loadCartProcess.php", true);
   request.send();
 }
 
@@ -621,7 +704,7 @@ function incrementCartQty(x) {
     }
   };
 
-  request.open("POST", "updateCartQtyprocess.php", true);
+  request.open("POST", "updateCartQtyProcess.php", true);
   request.send(f);
 }
 
@@ -647,7 +730,7 @@ function decrementCartQty(x) {
     }
   };
 
-  request.open("POST", "updateCartQtyprocess.php", true);
+  request.open("POST", "updateCartQtyProcess.php", true);
   request.send(f);
 }
 
@@ -668,7 +751,7 @@ function removeCart(x) {
       var request = new XMLHttpRequest();
       request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-          var responce = request.responseText;
+          var response = request.responseText;
           location.reload();
         }
       };
@@ -678,7 +761,9 @@ function removeCart(x) {
         title: "Deleted!",
         text: "Your file has been deleted.",
         icon: "success",
+        delay: 2000,
       });
+      window.location = "cart.php";
     }
   });
 }
@@ -716,8 +801,12 @@ function doCheckout(payment, path) {
     request.onreadystatechange = function () {
       if (request.readyState == 4 && request.status == 200) {
         var response = request.responseText;
-        if (response == "Success") {
-          location.reload();
+        // alert(response);
+        var order = JSON.parse(response);
+        if (order.respo == "Success") {
+          // location.reload();
+          window.location = "invoice.php";
+          window.location = "invoice.php?order_id=" + order.order_id;
         } else {
           alert(response);
         }
@@ -748,7 +837,7 @@ function doCheckout(payment, path) {
 function buyNow(stockId) {
   //alert(stockId);
   var qty = document.getElementById("qty");
-  if (Number(qty.value)> 0) {
+  if (Number(qty.value) > 0) {
     var f = new FormData();
     f.append("cart", false);
     f.append("stockId", stockId);
@@ -773,3 +862,191 @@ function buyNow(stockId) {
   }
 }
 // Payment Processes
+
+// Forget Password Processes
+function forgetPassword() {
+  var email = document.getElementById("e");
+
+  if (email.value != "") {
+    var f = new FormData();
+    f.append("e", email.value);
+
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+      if (request.readyState == 4 && request.status == 200) {
+        var response = request.responseText;
+        // alert(response);
+        if (response == "Success") {
+          document.getElementById("msg").innerHTML =
+            "Password Reset Link Sent to Your Email";
+          document.getElementById("msg").className = "alert alert-success";
+          document.getElementById("msgDiv").className = "d-block";
+          email.value = "";
+        } else {
+          document.getElementById("msg").innerHTML = "Email Not Found";
+          document.getElementById("msg").className = "alert alert-danger";
+          document.getElementById("msgDiv").className = "d-block";
+          email.value = "";
+        }
+      }
+    };
+    request.open("POST", "forgetPasswordProcess.php", true);
+    request.send(f);
+  } else {
+    Swal.fire("Please Enter Your Email!");
+  }
+}
+
+function resetPassword() {
+  var vcode = document.getElementById("vcode");
+  var np = document.getElementById("np");
+  var np2 = document.getElementById("np2");
+
+  var f = new FormData();
+  f.append("vcode", vcode.value);
+  f.append("np", np.value);
+  f.append("np2", np2.value);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      if (response == "Success") {
+        window.location = "signIn.php";
+      } else {
+        document.getElementById("msg").innerHTML = response;
+        document.getElementById("msg").className = "alert alert-danger";
+        document.getElementById("msgDiv").className = "d-block";
+      }
+    }
+  };
+  request.open("POST", "resetPasswordProcess.php", true);
+  request.send(f);
+}
+// Forget Password Processes
+
+// Chart Process
+function loadChart() {
+  const ctx = document.getElementById("myChart");
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      var data = JSON.parse(response);
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: data.labels,
+          datasets: data.datasets,
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false, //Legend
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+  };
+
+  request.open("GET", "loadChartProcess.php", true);
+  request.send();
+}
+
+// Nav-Bar Hide and show
+let lastScrollTop = 0;
+const navbar = document.querySelector(".navbar");
+
+window.addEventListener("scroll", function () {
+  let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop) {
+    // Downscroll code
+    navbar.classList.add("navbar-hide");
+    navbar.classList.remove("navbar-show");
+  } else {
+    // Upscroll code
+    navbar.classList.remove("navbar-hide");
+    navbar.classList.add("navbar-show");
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+});
+// Nav-Bar Hide and show
+
+
+// Function to toggle Themes nd Load theme preference from localStorage
+function toggleDarkMode() {
+  // Get the checkbox element
+  var darkModeSwitch = document.getElementById("darkModeSwitch");
+  // Get the body element
+  var body = document.body;
+  // Toggle data-bs-theme attribute
+  if (darkModeSwitch.checked) {
+    body.setAttribute("data-bs-theme", "dark");
+    // Save theme preference to localStorage
+    localStorage.setItem("theme", "dark");
+    // Change navbar text color to white
+    document;
+    document
+      .querySelectorAll(
+        ".navbar-nav .nav-link, .navbar-nav .btn, .navbar-brand"
+      )
+      .forEach((item) => {
+        item.classList.remove("text-black");
+        item.classList.add("text-white");
+      });
+  } else {
+    body.setAttribute("data-bs-theme", "light");
+    // Save theme preference to localStorage
+    localStorage.setItem("theme", "light");
+    // Change navbar text color to black
+    document;
+    document
+      .querySelectorAll(
+        ".navbar-nav .nav-link, .navbar-nav .btn, .navbar-brand"
+      )
+      .forEach((item) => {
+        item.classList.remove("text-white");
+        item.classList.add("text-black");
+      });
+  }
+}
+
+// Function to load theme preference from localStorage
+function loadThemePreference() {
+  var theme = localStorage.getItem("theme");
+  if (theme === "dark") {
+    document.getElementById("darkModeSwitch").checked = true;
+    document.body.setAttribute("data-bs-theme", "dark");
+    document
+      .querySelectorAll(".navbar-nav .nav-link, .navbar-nav .btn")
+      .forEach((item) => {
+        item.classList.remove("text-black");
+        item.classList.add("text-white");
+      });
+  } else {
+    document.body.setAttribute("data-bs-theme", "light");
+    document
+      .querySelectorAll(".navbar-nav .nav-link, .navbar-nav .btn")
+      .forEach((item) => {
+        item.classList.remove("text-white");
+        item.classList.add("text-black");
+      });
+  }
+}
+
+// Event listener for checkbox change
+document
+  .getElementById("darkModeSwitch")
+  .addEventListener("change", toggleDarkMode);
+
+// Load theme preference on page load
+window.addEventListener("load", loadThemePreference);

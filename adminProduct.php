@@ -16,7 +16,7 @@ if (isset($_SESSION["a"])) {
         <title>Products - Admin Panel</title>
     </head>
 
-    <body class="adminBody">
+    <body class="adminBody quick-font">
 
         <?php include "adminNavbar.php" ?>
 

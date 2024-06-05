@@ -22,7 +22,7 @@ if (isset($_SESSION["a"])) {
         <title>Product Report</title>
     </head>
 
-    <body>
+    <body class="quick-font">
 
 
         <div class="container mt-3">

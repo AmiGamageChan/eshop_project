@@ -11,10 +11,10 @@ if (isset($_SESSION["a"])) { ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="bootstrap.css">
-        <title>Online Store - Admin Dashboard</title>
+        <title>Fashion Haven - Admin Dashboard</title>
     </head>
 
-    <body class="adminBody" onload="loadUser();">
+    <body class="adminBody quick-font" onload="loadUser();">
         <!--Nav bar -->
         <?php include "adminNavBar.php"; ?>
         <!--Nav bar -->
@@ -58,7 +58,7 @@ if (isset($_SESSION["a"])) { ?>
 
         <!--Footer-->
         <div class="fixed-bottom col-12">
-            <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved </p>
+            <p class="text-center">&copy; 2024 Fashion Haven.lk || All Right Reserved </p>
         </div>
         <!--Footer-->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

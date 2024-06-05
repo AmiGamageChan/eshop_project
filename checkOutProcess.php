@@ -33,5 +33,11 @@ if (isset($_POST["payment"])) {
     }
 
     Database::iud("DELETE FROM `cart` WHERE `user_id` = '" . $user["id"] . "'");
-    echo ("Success");
+    // echo ("Success");
+
+    $order = array();
+    $order["respo"] = "Success";
+    $order["order_id"] = $orderHistoryId;
+
+    echo json_encode($order);
 }

@@ -1,5 +1,6 @@
 {
     "github.copilot.advanced": {
         
-    }
+    },
+    "outline.collapseItems": "alwaysCollapse"
 }

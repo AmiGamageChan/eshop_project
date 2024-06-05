@@ -9,7 +9,6 @@ if (isset($_SESSION["a"])) {
 
     <!DOCTYPE html>
     <html lang="en" data-bs-theme="dark">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +17,7 @@ if (isset($_SESSION["a"])) {
         <link rel="stylesheet" href="style.css" />
     </head>
 
-    <body class="adminBody">
+    <body class="adminBody quick-font">
         <?php
         include "adminNavBar.php";
         ?>
@@ -169,7 +168,7 @@ if (isset($_SESSION["a"])) {
 
         <!-- footer -->
         <div class="fixed-bottom col-12">
-            <p class="text-center">&copy; 2024 Online Store.lk || All Right Reserved</p>
+            <p class="text-center">&copy; 2024 Fashion Haven || All Right Reserved</p>
         </div>
         <!-- footer -->
         

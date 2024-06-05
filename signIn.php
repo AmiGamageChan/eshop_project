@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background-image: url('Resources/Img/background.jpg');
@@ -17,12 +18,12 @@
     <title>OnlineStore</title>
 </head>
 
-<body class="sbody">
+<body class="sbody quick-font">
 
     <!-- Sign In box -->
     <div class="signIn-box" id="signInBox">
 
-        <h2 class="text-center">Sign In</h2>
+        <h2 class="text-center ">Sign In</h2>
 
         <?php
 
@@ -61,11 +62,14 @@
 
 
         <div class="mt-2">
-            <button class="btn btn-secondary col-12" onclick="signIn();">Sign In</button>
+            <button class="btn btn-success btn-outline-dark col-12" onclick="signIn();">Sign In</button>
         </div>
 
         <div class="mt-2">
             <button class="btn btn-outline-secondary col-12" onclick="changeView();">Haven't registered yet?</button>
+        </div>
+        <div class="justify-content-center mt-2">
+            <a href="forgetPassword.php">Don't remember your password?</a>
         </div>
 
     </div>
