@@ -4,11 +4,12 @@ include "connection.php";
 
 ?>
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
     <title>Fashion Haven</title>
@@ -19,26 +20,23 @@ include "connection.php";
     <!--Nav bar -->
     <?php include "NavBar.php"; ?>
     <!--Nav bar -->
+
+    <!-- carousel -->
     <div class="container">
         <div class="row justify-content-center mt-2">
             <div class="col-md-8 mt-5">
-                <div class="container card bor mt-4">
-                    <div class="card-body">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
+                <div class="container shadow mt-4">
+                    <div class="card-body shadowbox">
+                        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
+                                <div class="carousel-item active ">
                                     <img class="d-block w-100" src="Resources/Branding/brand.png" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="..." alt="Second slide">
+                                    <img class="d-block w-100" src="Resources/Branding/brand3.png" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="..." alt="Third slide">
+                                    <img class="d-block w-100" src="Resources/Branding/partners.gif" alt="Third slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -73,8 +71,8 @@ include "connection.php";
             <div class="row col-12">
 
                 <div class="col-3">
-                    <label for="form-label" class="col-3">Color :</label>
-                    <select id="color" class="form-select bg-dark col-9">
+                    <label for="form-label" class="col-3">Color:</label>
+                    <select id="color" class="form-select col-auto">
                         <option value="0">Select Color</option>
                         <?php
                         $rs = Database::search("SELECT * FROM `color`");
@@ -91,14 +89,14 @@ include "connection.php";
                 </div>
 
                 <div class="col-3">
-                    <label for="form-label" class="col-3">Category :</label>
-                    <select id="cat" class="form-select bg-dark col-9">
+                    <label for="form-label" class="col-3">Category:</label>
+                    <select id="cat" class="form-select col-auto">
                         <option value="0">Select Category</option>
                         <?php
                         $rs2 = Database::search("SELECT * FROM `category`");
                         $num2 = $rs2->num_rows;
 
-                        for ($x = 0; $x < $num; $x++) {
+                        for ($x = 0; $x < $num2; $x++) {
                             $d2 = $rs2->fetch_assoc();
                         ?>
                             <option value="<?php echo $d2["cat_id"]; ?>"><?php echo $d2["cat_name"]; ?></option>
@@ -109,14 +107,14 @@ include "connection.php";
                 </div>
 
                 <div class="col-3">
-                    <label for="form-label" class="col-3">Brand :</label>
-                    <<select id="brand" class="form-select bg-dark col-9">
+                    <label for="form-label" class="col-3">Brand: </label>
+                    <select id="brand" class="form-select  col-auto">
                         <option value="0">Select Brand</option>
-                        <<?php
+                        <?php
                             $rs3 = Database::search("SELECT * FROM `brand`");
                             $num3 = $rs3->num_rows;
 
-                            for ($p = 0; $p < $num; $p++) {
+                            for ($p = 0; $p < $num3; $p++) {
                                 $d3 = $rs3->fetch_assoc();
                             ?> <option value="<?php echo $d3["brand_id"]; ?>"><?php echo $d3["brand_name"]; ?></option>
                         <?php
@@ -126,14 +124,14 @@ include "connection.php";
                 </div>
 
                 <div class="col-3">
-                    <label for="form-label" class="col-3">Size :</label>
-                    <select id="size" class="form-select bg-dark col-9">
+                    <label for="form-label" class="col-3">Size:</label>
+                    <select id="size" class="form-select  col-auto">
                         <option value="0">Select Size</option>
                         <<?php
                             $rs4 = Database::search("SELECT * FROM `size`");
                             $num4 = $rs4->num_rows;
 
-                            for ($n = 0; $n < $num; $n++) {
+                            for ($k = 0; $k < $num4; $k++) {
                                 $d4 = $rs4->fetch_assoc();
                             ?> <option value="<?php echo $d4["size_id"]; ?>"><?php echo $d4["size_name"]; ?></option>
                         <?php
@@ -142,16 +140,15 @@ include "connection.php";
                     </select>
                 </div>
             </div>
-
             <div class="row mt-4 col-12">
-                <div class="col-5">
+                <div class="col-6">
                     <input id="min" type="text" class="form-control" placeholder="Min Price">
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <input id="max" type="text" class="form-control" placeholder="Max Price">
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center mt-4">
-                    <button class="btn btn-outline-light col-lg-3 col-sm-4 col-md-4 " onclick="advSearchProduct(0);"> Search</button>
+                    <button class="btn btn-outline-light col-lg-6 col-sm-4 col-md-4 " onclick="advSearchProduct(0);"> Search</button>
                 </div>
             </div>
         </div>
@@ -166,14 +163,15 @@ include "connection.php";
 
 
     <!--Footer-->
-    <div class="col-12 mt-3">
-        <p class="text-center">&copy; 2024 Fashion Haven.lk || All Right Reserved </p>
-    </div>
+    <?php include "footer.php"; ?>  
     <!--Footer-->
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
 

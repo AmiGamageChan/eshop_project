@@ -12,17 +12,29 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="adminDashboard.php">User Management</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+          </li>
           <li class="nav-item ms-1">
             <a class="nav-link active" aria-current="page" href="adminProduct.php">Product Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
           </li>
           <li class="nav-item ms-1">
             <a class="nav-link active" aria-current="page" href="adminStock.php">Stock Management</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+          </li>
           <li class="nav-item ms-1">
             <a class="nav-link active" aria-current="page" href="adminReport.php">Reports</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+          </li>
           <li class="nav-item ms-1">
-            <button class="btn btn-danger" onclick="adminSignOut();">Sign Out</button>
+            <button class="btn btn-danger col-auto" onclick="adminSignOut();">Sign Out</button>
           </li>
         </ul>
       </div>

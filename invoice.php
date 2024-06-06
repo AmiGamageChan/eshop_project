@@ -26,12 +26,13 @@ if (isset($_GET["order_id"])) {
         <body>
 
             <div class="container text-end mt-2">
+            <a onclick="printDiv('printArea');" class="btn btn-info">Print</a>
                 <a href="index.php" class="btn btn-primary">Home</a>
             </div>
 
-            <div class="container mt-2 mb-4">
-                <div class="border border-3 border-black p-5 rounded-3">
-                    <div class="row">
+            <div class="container mt-2 mb-4"  >
+                <div class="border border-3 border-black p-5 rounded-3" id="printArea">
+                    <div class="row" >
                         <div class="col-6">
                             <h4>Name: <?php echo ($user["fname"]) ?></h4>
                             <h5><?php echo ($user['line_1']) ?></h5>
@@ -104,6 +105,7 @@ if (isset($_GET["order_id"])) {
             </div>
         </body>
 
+        <script src="script.js"></script>
         </html>
 
 <?php

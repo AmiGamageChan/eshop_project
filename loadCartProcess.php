@@ -35,7 +35,7 @@ if ($num > 0) {
 
     ?>
         <!-- Card Items -->
-        <div class="col-12 border border-3 rounded-5 p-3 mb-2 d-flex justify-content-between">
+        <div class="col-12 border border-3 rounded-5 p-3 mb-2 d-flex justify-content-between shadowbox">
             <div class="d-flex align-items-center col-5">
                 <img src="<?php echo $d["path"]; ?>" class="rounded-4" width="200px">
                 <div class="ms-5">

@@ -14,7 +14,7 @@ $q = "SELECT * FROM `stock` INNER JOIN `product` ON `stock`.`product_id` = `prod
 $rs = Database::search($q);
 $num = $rs->num_rows;
 
-$results_per_page = 4;
+$results_per_page = 8;
 $num_of_pages = ceil($num / $results_per_page);
 
 $page_results = ($pageno - 1) * $results_per_page;
@@ -38,22 +38,24 @@ if ($num2 == 0) {
         <div class="col-3 mt-5 d-flex justify-content-center">
             <div class="card" style="vw:25%">
                 <a href="singleProductView.php?s=<?php echo $d['product_id']; ?>"><img src="<?php echo $d['path']; ?>" class="card-img-top"></a>
-                <div class="card-body d-flex flex-column justify-content-between text-center">
+                <div class="card-body d-flex flex-column justify-content-center">
                     <div class="mb-3">
                         <h5 class="card-title"><?php echo $d['name']; ?></h5>
-                        <p class="card-text"><?php echo $d['description']; ?></p>
-                        <p class="card-text"><?php echo $d['price']; ?></p>
+                        <p class="card-text text-justify"><?php echo $d['description']; ?></p>
+
                         <!-- <p class="card-text"><?php echo $d['id']; ?></p> -->
                         <p class="card-text d-none" id="qty-<?php echo $d['id']; ?>">1</p>
                     </div>
-                    <div class="d-flex justify-content-between mt-auto">
-                        <button class="btn btn-outline-primary col-6" onclick="addtoCartIndex(<?php echo $d['id']; ?>);">Add to Cart</button>
-                        <button class="btn btn-outline-warning col-6 ms-2" id="payhere-payment" onclick="buyNow(<?php echo $d['stock_id']; ?>);">Buy Now</button>
+                    <div class="d-flex flex-column mt-auto">
+                        <p class="card-text text-center mb-0 mb-3">Rs: <?php echo $d['price']; ?></p>
+                        <div class="d-flex justify-content-between mt-auto">
+                            <button class="btn btn-outline-primary col-6" onclick="addtoCartIndex(<?php echo $d['id']; ?>);">Add to Cart</button>
+                            <button class="btn btn-outline-warning col-6 ms-2" id="payhere-payment" onclick="buyNow(<?php echo $d['stock_id']; ?>);">Buy Now</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!--Card Loading-->
     <?php
     }
@@ -63,8 +65,10 @@ if ($num2 == 0) {
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link flex-column" <?php if ($pageno <= 1) {
-                                                                echo "href='#'";
-                                                            } else { ?> onclick="loadProduct(<?php echo ($pageno - 1); ?>);" <?php } ?>>Previous</a></li>
+                                                                            echo "href='#'";
+                                                                        } else { ?> onclick="loadProduct(<?php echo ($pageno - 1); ?>);" <?php } ?>
+                    ><<</a>   
+                </li>
 
                 <?php
                 for ($y = 1; $y <= $num_of_pages; $y++) {
@@ -82,7 +86,7 @@ if ($num2 == 0) {
 
                 <li class="page-item"><a class="page-link" <?php if ($pageno >= $num_of_pages) {
                                                                 echo "href='#'";
-                                                            } else { ?> onclick="loadProduct(<?php echo ($pageno + 1); ?>);" <?php } ?>>Next</a></li>
+                                                            } else { ?> onclick="loadProduct(<?php echo ($pageno + 1); ?>);" <?php } ?>>>></a></li>
             </ul>
         </nav>
     </div>

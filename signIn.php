@@ -7,14 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-image: url('Resources/Img/background.jpg');
-            background-size:auto;
-            background-position: center;
-            /* Add blur effect */
-        }
-    </style>
     <title>OnlineStore</title>
 </head>
 

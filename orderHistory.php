@@ -41,7 +41,7 @@ if (isset($user)) {
                     ?>
                         <!--Order history card-->
 
-                        <div class="mt-3 p-3 border border-3 rounded-3 bg-body-tertiary">
+                        <div class="mt-3 p-3 border border-3 rounded-3 bg-body-tertiary shadowbox">
                             <div>
                                 <h5 class="text-info">Order ID: <span class="text-warning"><?php echo ($d["order_id"]) ?></span></h5>
                             </div>
@@ -78,7 +78,7 @@ if (isset($user)) {
                             </table>
 
                         </div>
-                        <div class="mt-1 d-flex flex-column align-items-end pe-5">
+                        <div class="mt-1 d-flex flex-column align-items-end pe-5 mt-2">
                             <h6>Delivery Fee:<span class="text-muted">500</span></h6>
                             <h4>Net Total: <span class="text-warning"><?php echo $d["amount"]; ?></span></h4>
                         </div>
@@ -106,9 +106,12 @@ if (isset($user)) {
             <p class="text-center fixed-bottom">&copy; 2024 Fashion Haven || All Right Reserved </p>
         </div>
         <!--Footer-->
-
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 
     </html>

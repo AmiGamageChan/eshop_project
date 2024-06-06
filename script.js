@@ -454,6 +454,89 @@ function updateUserStatus() {
 }
 // Admin Processes
 
+//User Processes
+function userUpdate(id) {
+  var email = document.getElementById("email");
+  var mobile = document.getElementById("mobile");
+  var pwd = document.getElementById("pw");
+  var username = document.getElementById("uname");
+  var no = document.getElementById("no");
+  var line_1 = document.getElementById("line_1");
+  var line_2 = document.getElementById("line_2");
+
+  var f = new FormData();
+  f.append("id", id);
+  f.append("e", email.value);
+  f.append("m", mobile.value);
+  f.append("p", pwd.value);
+  f.append("u", username.value);
+  f.append("no", no.value);
+  f.append("l1", line_1.value);
+  f.append("l2", line_2.value);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      if (response == "Success") {
+        Swal.fire({
+          title: "Updated!",
+          text: "Your Account has been updated.",
+          icon: "success",
+        }).then(() => {
+          // Delay
+          setTimeout(() => {
+            window.location = "Profile.php";
+          }, 2000);
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: response,
+          icon: "error",
+        });
+      }
+    }
+  };
+  request.open("POST", "updateUserProcess.php", true);
+  request.send(f);
+}
+
+function updateImg(id) {
+  var file = document.getElementById("imgUploader");
+
+  var f = new FormData();
+  f.append("id", id);
+  f.append("image", file.files[0]);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      if (response == "Success") {
+        Swal.fire({
+          title: "Updated!",
+          text: "Your Account Image has been updated.",
+          icon: "success",
+        }).then(() => {
+          // Delay
+          setTimeout(() => {
+            window.location = "Profile.php";
+          }, 1500);
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: response,
+          icon: "error",
+        });
+      }
+    }
+  }
+  request.open("POST", "updateImgProcess.php", true);
+  request.send(f);
+}
+
 function userDelete() {
   Swal.fire({
     title: "Are you sure?",
@@ -499,15 +582,17 @@ function userDelete() {
     }
   });
 }
+//User Processes
 
 function printDiv(areaId) {
   var originalContent = document.body.innerHTML;
   var printArea = document.getElementById(areaId).innerHTML;
 
   document.body.innerHTML = printArea;
-
   window.print();
-  window.reload();
+  document.body.innerHTML = originalContent;
+  window.location.reload();
+
 }
 
 // Product Processes
@@ -960,6 +1045,11 @@ function loadChart() {
   request.send();
 }
 
+
+
+
+//Utility Processes
+
 // Nav-Bar Hide and show
 let lastScrollTop = 0;
 const navbar = document.querySelector(".navbar");
@@ -980,6 +1070,7 @@ window.addEventListener("scroll", function () {
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
 });
 // Nav-Bar Hide and show
+
 
 
 // Function to toggle Themes nd Load theme preference from localStorage
