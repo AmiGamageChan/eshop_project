@@ -1,3 +1,4 @@
+<link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand me-3" href="index.php"><img src="Resources/img/logo.png" alt="" height="80">Fashion Haven Clothing</a>

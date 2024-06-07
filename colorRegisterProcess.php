@@ -16,7 +16,7 @@ if (empty($color)) {
     $num = $rs->num_rows;
 
     if ($num > 0) {
-        echo ("Your color name is Already exist");
+        echo ("Your color name Already exist");
     } else {
 
         Database::iud("INSERT INTO `color` (`color_name`) VALUES ('" . $color . "')");

@@ -16,7 +16,7 @@ $rs = Database::search("SELECT * FROM `size` WHERE `size_name` = '".$size."'");
 $num = $rs->num_rows;
 
 if ($num > 0) {
-    echo ("Your Size name is Already exist");
+    echo ("Your Size name Already exist");
 } else {
 
     Database::iud("INSERT INTO `size` (`size_name`) VALUES ('".$size."')");

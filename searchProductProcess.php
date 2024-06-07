@@ -45,8 +45,6 @@ if ($num2 == 0) {
                 <div class="card-body d-flex flex-column justify-content-center">
                     <div class="mb-3">
                         <h5 class="card-title"><?php echo $d['name']; ?></h5>
-                        <p class="card-text text-justify"><?php echo $d['description']; ?></p>
-
                         <!-- <p class="card-text"><?php echo $d['id']; ?></p> -->
                         <p class="card-text d-none" id="qty-<?php echo $d['id']; ?>">1</p>
                     </div>

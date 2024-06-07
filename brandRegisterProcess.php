@@ -16,7 +16,7 @@ if (empty($brand)) {
     $num = $rs->num_rows;
 
     if ($num > 0) {
-        echo ("Your brand name is Already exist");
+        echo ("Your Brand Name Already exist");
     } else {
 
         Database::iud("INSERT INTO `brand` (`brand_name`) VALUES ('" . $brand . "')");

@@ -74,7 +74,7 @@ if($num>0){
 
                     <tr>
                         <td align="center">
-                            <p>copyrights</p>
+                            <p>Fashion Haven - Clad Yourself In Luxury</p>
                             <hr/>
 
                         </td>

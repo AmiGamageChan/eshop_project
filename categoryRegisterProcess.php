@@ -16,7 +16,7 @@ if (empty($cat)) {
     $num = $rs->num_rows;
 
     if ($num > 0) {
-        echo ("Your Category name is Already exist");
+        echo ("Your Category name Already exist");
     } else {
 
         Database::iud("INSERT INTO `category` (`cat_name`) VALUES ('" . $cat . "')");

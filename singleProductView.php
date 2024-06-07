@@ -22,6 +22,7 @@ INNER JOIN `size` ON `product`.`size_id`=`size`.`size_id` WHERE `stock`.`stock_i
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
     <title>Fashion Haven - <?php echo $d["name"] ?></title>
