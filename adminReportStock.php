@@ -11,11 +11,12 @@ if (isset($_SESSION["a"])) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="style.css" />
         <title>Stock Report</title>
@@ -63,7 +64,7 @@ if (isset($_SESSION["a"])) {
         </div>
 
         <div class="d-flex justify-content-end container mt-5">
-            <button class="btn btn-outline-warning col-2" onclick="printDiv('printArea');">Print</button>
+            <button class="btn btn-outline-info col-2" onclick="printDiv('printArea');">Print</button>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

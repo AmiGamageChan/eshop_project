@@ -10,34 +10,35 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="adminDashboard.php">User Management</a>
+            <a class="nav-link active text-nowrap" aria-current="page" href="adminDashboard.php">User Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+            <a class="nav-link active d-none d-lg-block text-nowrap" aria-current="page" href="adminDashboard.php">|</a>
           </li>
           <li class="nav-item ms-1">
-            <a class="nav-link active" aria-current="page" href="adminProduct.php">Product Management</a>
+            <a class="nav-link active text-nowrap" aria-current="page" href="adminProduct.php">Product Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+            <a class="nav-link active d-none d-lg-block text-nowrap" aria-current="page" href="adminDashboard.php">|</a>
           </li>
           <li class="nav-item ms-1">
-            <a class="nav-link active" aria-current="page" href="adminStock.php">Stock Management</a>
+            <a class="nav-link active text-nowrap" aria-current="page" href="adminStock.php">Stock Management</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+            <a class="nav-link active d-none d-lg-block text-nowrap" aria-current="page" href="adminDashboard.php">|</a>
           </li>
           <li class="nav-item ms-1">
-            <a class="nav-link active" aria-current="page" href="adminReport.php">Reports</a>
+            <a class="nav-link active text-nowrap" aria-current="page" href="adminReport.php">Reports</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="adminDashboard.php">|</a>
+            <a class="nav-link active d-none d-lg-block text-nowrap" aria-current="page" href="adminDashboard.php">|</a>
           </li>
           <li class="nav-item ms-1">
-            <button class="btn btn-danger col-auto" onclick="adminSignOut();">Sign Out</button>
+            <button class="btn btn-danger col-auto text-nowrap" onclick="adminSignOut();">Sign Out</button>
           </li>
         </ul>
       </div>
+
 
   </div>
 </nav>

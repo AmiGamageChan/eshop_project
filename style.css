@@ -1,78 +1,140 @@
-.sbody{
-    background-image: url("Resources/img/background.png");
-    display: flex;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
+.sbody {
+  background-image: url("Resources/img/background.png");
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
 }
-.signIn-box{
-
-    width: 350px;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.822);
-    box-shadow: 0px 0px 10px 0px rgb(250, 250, 250);
+.signIn-box {
+  width: 350px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.822);
+  box-shadow: 0px 0px 10px 0px rgb(250, 250, 250);
 }
-.signUp-box{
-
-    width: 550px;
-    padding: 20px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.74);
-    box-shadow: 0px 0px 10px 0px rgb(250, 250, 250);
+.signUp-box {
+  width: 550px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.74);
+  box-shadow: 0px 0px 10px 0px rgb(250, 250, 250);
 }
 
 /* admin CSS */
-.adminSignInBody{
-    background-image: url("Resources/img/adminbackground.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
+.adminSignInBody {
+  background-image: url("Resources/img/adminbackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
 }
 
-.adminSignInBox{
-    width: 350px;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 0px rgb(14, 14, 14);
-    /* background-color: white; */
+.adminSignInBox {
+  width: 350px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgb(14, 14, 14);
+  /* background-color: white; */
 }
 
-.adminBody{
-display: flex;
-justify-content: center;
-height: 100vh;
-align-items: center;
-
+.adminBody {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
 }
 
 /* table CSS */
 .center-vertical {
-    vertical-align: middle;
-    text-align: left;
+  vertical-align: middle;
+  text-align: left;
 }
 
-.quick-font{
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
+.center-center {
+  text-align: center;
+  vertical-align: middle;
 }
 
+/* Font */
+.quick-font {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+}
+
+/* Navbar Scroll Visbility */
 .navbar-hide {
-    transform: translateY(-100%);
-    transition: transform 0.5s ease-in-out;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .navbar-show {
-    transform: translateY(0);
-    transition: transform 0.5s ease-in-out;
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
 }
 
-.shadowbox{
-    box-shadow: 0px 0px 10px 0px rgb(255, 236, 236);
+.shadowbox {
+  box-shadow: 0px 0px 10px 0px rgb(255, 227, 227);
+}
+
+/* reset body */
+.rsbody {
+  background-image: url("Resources/img/resetbg.png");
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+/* admin Dash */
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.sidebar-sticky {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.nav-item {
+  width: 100%;
+  text-align: left;
+}
+
+.background-image {
+  background-image: url("Resources/img/adminDash.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+.text-size-admin {
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .text-size-admin {
+    font-size: text-md;
+  }
+
+  .text-size-admin {
+    font-size: 1.3rem;
+  }
 }

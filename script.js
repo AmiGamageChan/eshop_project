@@ -160,7 +160,7 @@ function adminSignIn() {
           timer: 2000, // 2 seconds timer
           showConfirmButton: false,
         }).then(() => {
-          window.location = "adminDashboard.php";
+          window.location = "adminDashboardWelcome.php";
         });
       } else {
         document.getElementById("msg").innerHTML = response;
@@ -532,7 +532,7 @@ function updateImg(id) {
         });
       }
     }
-  }
+  };
   request.open("POST", "updateImgProcess.php", true);
   request.send(f);
 }
@@ -592,7 +592,6 @@ function printDiv(areaId) {
   window.print();
   document.body.innerHTML = originalContent;
   window.location.reload();
-
 }
 
 // Product Processes
@@ -767,6 +766,95 @@ function loadCart() {
   request.send();
 }
 
+// Wish List
+function addToWishList(stockId) {
+  var qty = 1;
+
+  var f = new FormData();
+  f.append("s", stockId); // Assuming "s" represents the stock ID
+  f.append("q", qty);
+
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      if (response == "Success") {
+        Swal.fire({
+          title: "Success!",
+          text: "Item added to Wishlist Successfully!",
+          icon: "success",
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: response,
+          icon: "error",
+          showConfirmButton: false,
+        });
+      }
+      setTimeout(function () {
+        Swal.close();
+      }, 1500);
+    }
+  };
+  request.open("POST", "addToWishListProcess.php", true);
+  request.send(f);
+}
+
+function loadWishlist() {
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      var response = request.responseText;
+      document.getElementById("cartBody").innerHTML = response;
+    }
+  };
+
+  request.open("POST", "loadWishlistProcess.php", true);
+  request.send();
+}
+
+function removeWishlist(x) {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You want to remove this item!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, Remove it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      var f = new FormData();
+      f.append("c", x);
+
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          var response = request.responseText;
+          if (response == "Success") {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your item has been deleted from the Wishlist.",
+              icon: "success",
+              timer: 1200,
+              timerProgressBar: true,
+              showConfirmButton: false,
+            });
+            setTimeout(function () {
+              window.location = "wishlist.php";
+            }, 1200);
+          }
+        }
+      };
+      request.open("POST", "removeWishListProcess.php", true);
+      request.send(f);
+    }
+  });
+}
+// Wish List
+
 function incrementCartQty(x) {
   var cartId = x;
   var qty = document.getElementById("qty" + x);
@@ -852,7 +940,7 @@ function removeCart(x) {
     }
   });
 }
-// Cart Processes
+// Payment Processes
 
 // Payment Processes
 function checkOut() {
@@ -943,12 +1031,34 @@ function buyNow(stockId) {
     request.open("POST", "paymentProcess.php", true);
     request.send(f);
   } else {
-    alert("Please enter valid quantity");
+    let timerInterval;
+    Swal.fire({
+      html: "Please Enter a Valid Quantity",
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const timer = Swal.getPopup().querySelector("b");
+        timerInterval = setInterval(() => {
+          timer.textContent = `${Swal.getTimerLeft()}`;
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
   }
 }
+
 // Payment Processes
 
 // Forget Password Processes
+
 function forgetPassword() {
   var email = document.getElementById("e");
 
@@ -978,7 +1088,11 @@ function forgetPassword() {
     request.open("POST", "forgetPasswordProcess.php", true);
     request.send(f);
   } else {
+    document.getElementById("signInBox").classList.add("d-none");
     Swal.fire("Please Enter Your Email!");
+    setTimeout(function () {
+      window.location.reload();
+    }, 1500);
   }
 }
 
@@ -1045,11 +1159,9 @@ function loadChart() {
   request.send();
 }
 
-
-
-
 //Utility Processes
 
+// 
 // Nav-Bar Hide and show
 let lastScrollTop = 0;
 const navbar = document.querySelector(".navbar");
@@ -1070,8 +1182,6 @@ window.addEventListener("scroll", function () {
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
 });
 // Nav-Bar Hide and show
-
-
 
 // Function to toggle Themes nd Load theme preference from localStorage
 function toggleDarkMode() {
@@ -1114,23 +1224,61 @@ function toggleDarkMode() {
 // Function to load theme preference from localStorage
 function loadThemePreference() {
   var theme = localStorage.getItem("theme");
+  var navbarBrand = document.querySelector(".navbar-brand");
+  
   if (theme === "dark") {
     document.getElementById("darkModeSwitch").checked = true;
     document.body.setAttribute("data-bs-theme", "dark");
     document
       .querySelectorAll(".navbar-nav .nav-link, .navbar-nav .btn")
       .forEach((item) => {
-        item.classList.remove("text-black");
-        item.classList.add("text-white");
+        item.classList.remove("text-dark");
+        item.classList.add("text-light");
       });
+    if (navbarBrand) {
+      navbarBrand.classList.remove("text-dark");
+      navbarBrand.classList.add("text-light");
+      navbarBrand.querySelector('img').setAttribute('src', 'Resources/img/logowhite.png');
+    }
   } else {
     document.body.setAttribute("data-bs-theme", "light");
     document
       .querySelectorAll(".navbar-nav .nav-link, .navbar-nav .btn")
       .forEach((item) => {
-        item.classList.remove("text-white");
-        item.classList.add("text-black");
+        item.classList.remove("text-light");
+        item.classList.add("text-dark");
       });
+    if (navbarBrand) {
+      navbarBrand.classList.remove("text-light");
+      navbarBrand.classList.add("text-dark");
+      navbarBrand.querySelector('img').setAttribute('src', 'Resources/img/logo.png');
+    }
+  }
+}
+
+// Function to toggle dark mode
+function toggleDarkMode() {
+  var isChecked = document.getElementById("darkModeSwitch").checked;
+  if (isChecked) {
+    localStorage.setItem("theme", "dark");
+    document.body.setAttribute("data-bs-theme", "dark");
+    document
+      .querySelectorAll(".navbar-nav .nav-link, .navbar-nav .btn, .navbar-brand")
+      .forEach((item) => {
+        item.classList.remove("text-dark");
+        item.classList.add("text-light");
+      });
+    document.querySelector(".navbar-brand img").setAttribute("src", "Resources/img/logowhite.png");
+  } else {
+    localStorage.setItem("theme", "light");
+    document.body.setAttribute("data-bs-theme", "light");
+    document
+      .querySelectorAll(".navbar-nav .nav-link, .navbar-nav .btn, .navbar-brand")
+      .forEach((item) => {
+        item.classList.remove("text-light");
+        item.classList.add("text-dark");
+      });
+    document.querySelector(".navbar-brand img").setAttribute("src", "Resources/img/logo.png");
   }
 }
 
@@ -1141,3 +1289,4 @@ document
 
 // Load theme preference on page load
 window.addEventListener("load", loadThemePreference);
+

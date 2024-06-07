@@ -4,21 +4,22 @@ session_start();
 
 if (isset($_SESSION["a"])) { ?>
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="bootstrap.css">
         <title>Fashion Haven - Admin Dashboard</title>
     </head>
 
-    <body class="adminBody" onload="loadChart();">
+    <body class="adminBody quick-font" onload="loadChart();">
         <!--Nav bar -->
         <?php include "adminNavBar.php"; ?>
         <!--Nav bar -->
-        <div class="row">
+        <div class="row col-4">
             <div class="container mt-5">
                 <div>
                     <h2 class="text-center">Most Sold Products</h2>
@@ -26,7 +27,7 @@ if (isset($_SESSION["a"])) { ?>
 
                 <div class="col-12">
                     <!-- Set the canvas dimensions here -->
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                    <canvas id="myChart" width="100%" height="100%" ></canvas>
                 </div>
 
             </div>

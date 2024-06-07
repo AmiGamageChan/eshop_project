@@ -4,11 +4,12 @@ session_start();
 
 if (isset($_SESSION["a"])) { ?>
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="bootstrap.css">
         <title>Fashion Haven - Admin Dashboard</title>
@@ -34,7 +35,7 @@ if (isset($_SESSION["a"])) { ?>
             </div>
 
             <div class="mt-3">
-                <table class="table table-dark border-success table-hover">
+                <table class="table table-light border-success table-hover">
                     <thead>
                         <tr>
                             <th scope="col">User Id</th>

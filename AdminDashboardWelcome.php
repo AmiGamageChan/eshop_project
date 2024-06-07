@@ -1,87 +1,92 @@
+<?php
 
-<?php include "adminNavBar.php"; ?>
-<!DOCTYPE html>
-<html lang="en">
+session_start();
+include "connection.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="style.css">
-    <link href="bootstrap.css" rel="stylesheet">
-</head>
+if (isset($_SESSION["a"])) {
+?>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap.css">
+        <link rel="stylesheet" href="style.css">
+        <link href="bootstrap.css" rel="stylesheet">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
+        <title>FH - Admin Dashboard</title>
+    </head>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar ">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column align-items-center mt-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Customers
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Integrations
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <body class="quick-font">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Left Side -->
+                <div class="col-sm-2 bg-primary">
+                    <nav class="col-2 col-md-2 d-md-block bg-light sidebar">
+                        <div class="sidebar-sticky">
+                            <?php
+                            $admin = $_SESSION["a"]["fname"];
+                            ?>
+                            <p class="text-center text-size-admin">Welcome Admin : <?php echo ($admin) ?></p>
+                            <div><img src="Resources/img/logo.png" class="img-fluid" alt="Logo"></div>
+                            <ul class="nav flex-column">
 
-            <!-- Main Content -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="pt-3 pb-2 mb-3 border-bottom">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h1 class="h2">Dashboard</h1>
-                        <div class="btn-toolbar">
-                            <div class="btn-group mr-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">User</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Logout</button>
-                            </div>
+                                <ul class="nav">
+                                    <li class="nav-item text-size-admin ms-3">
+                                        <a class="nav-link active text-xl" href="AdminDashboardWelcome.php">
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-size-admin ms-3">
+                                        <a class="nav-link text-xl" href="adminDashboard.php">
+                                            User Management
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-size-admin ms-3">
+                                        <a class="nav-link text-xl" href="adminProduct.php">
+                                            Product Management
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-size-admin ms-3">
+                                        <a class="nav-link text-xl" href="adminStock.php">
+                                            Stock Management
+                                        </a>
+                                    </li>
+                                    <li class="nav-item text-size-admin ms-3">
+                                        <a class="nav-link text-xl" href="adminReport.php">
+                                            Reports
+                                        </a>
+                                    </li>
+                                </ul>
+                                <li class="nav-item ms-1 mt-3">
+                                    <button class="btn btn-outline-danger col-auto text-nowrap ms-4" onclick="adminSignOut();">Sign Out</button>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
+                    </nav>
                 </div>
-
-                <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-            </main>
+                <!-- Right Side -->
+                <div class="background-image col-sm-10"></div>
+            </div>
         </div>
-    </div>
+
+        </div>
+        </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+        <script src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    </body>
 
 
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-</body>
-        <!--Footer-->
-        <div class="col-12 mt-3">
-        <p class="text-center fixed-bottom">&copy; 2024 Fashion Haven.lk || All Right Reserved </p>
-    </div>
-    <!--Footer-->
-</html>
+    </html>
+<?php
+} else {
+    header("Location: adminSignIn.php");
+}

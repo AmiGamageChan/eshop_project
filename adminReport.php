@@ -4,11 +4,12 @@ session_start();
 if (isset($_SESSION["a"])) {
 ?>
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="bootstrap.css">
         <link rel="stylesheet" href="style.css">
         <title>Fashion Haven - Admin Dashboard</title>
@@ -25,19 +26,19 @@ if (isset($_SESSION["a"])) {
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-7 mt-5">
-                        <a href="adminReportStock.php"><button class="btn btn-outline-info col-12">Stock Reports</button></a>
+                        <a href="adminReportStock.php"><button class="btn btn-outline-success col-12">Stock Reports</button></a>
                     </div>
 
                     <div class="col-12 col-md-7 mt-5">
-                        <a href="adminReportProduct.php"><button class="btn btn-outline-info col-12">Product Reports</button></a>
+                        <a href="adminReportProduct.php"><button class="btn btn-outline-success col-12">Product Reports</button></a>
                     </div>
 
                     <div class="col-12 col-md-7 mt-5">
-                        <a href="adminReportUser.php"><button class="btn btn-outline-info col-12">User Reports</button></a>
+                        <a href="adminReportUser.php"><button class="btn btn-outline-success col-12">User Reports</button></a>
                     </div>
 
                     <div class="col-12 col-md-7 mt-5">
-                        <a href="adminUser.php"><button class="btn btn-outline-info col-12">Product Statistics</button></a>
+                        <a href="adminUser.php"><button class="btn btn-outline-success col-12">Product Statistics</button></a>
                     </div>
                 </div>
             </div>

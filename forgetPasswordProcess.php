@@ -40,7 +40,7 @@ if($num>0){
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Reset your account password';
         $mail->Body = '
-        <table style="width:100%; font-family: quicksand;">
+                <table style="width:100%; font-family: \'Quicksand\', sans-serif;">
     <tbody>
         <tr>
 
@@ -61,7 +61,7 @@ if($num>0){
                             <h1 style="font-size: 25px; line-height: 45px; font-weight: 600;">Reset Your Password</h1>
                             <p style="margin-bottom: 24px;"> You can change your password by clicking the button below</p>
                             <div>
-                                <a href="http://localhost/eshop_project/resetPassword.php?vcode='.$vcode.'" style="text-decoration: none; display: inline-block; border-radius: 8px; background-color: blue;
+                                <a href="http://localhost/eshop_project/resetPassword.php?vcode='.$vcode.'" style="box-shadow: 0px 0px 10px 0px rgb(250, 250, 250); text-decoration: none; display: inline-block; border-radius: 8px; background-color: green;
                                 color: white; padding: 15px;">
                                     <span>Reset Password</span>
                                 </a>

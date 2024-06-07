@@ -24,12 +24,12 @@ INNER JOIN `size` ON `product`.`size_id`=`size`.`size_id` WHERE `stock`.`stock_i
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Fashion Haven - <?php echo $d["name"] ?></title>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php include "navBar.php" ?>
+    <?php include "NavBar.php" ?>
     <!-- navbar -->
 
         <!-- Card  -->

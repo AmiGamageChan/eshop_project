@@ -9,9 +9,11 @@ include "connection.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Fashion Haven</title>
 </head>
 
@@ -148,7 +150,7 @@ include "connection.php";
                     <input id="max" type="text" class="form-control" placeholder="Max Price">
                 </div>
                 <div class="col-12 d-flex justify-content-center align-items-center mt-4">
-                    <button class="btn btn-outline-light col-lg-6 col-sm-4 col-md-4 " onclick="advSearchProduct(0);"> Search</button>
+                    <button class="btn btn-outline-info col-lg-6 col-sm-4 col-md-4 " onclick="advSearchProduct(0);"> Search</button>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.php"><img src="Resources/img/logo.png" alt="" height="80" class="me-3">Online Store</a>
+        <a class="navbar-brand me-3" href="index.php"><img src="Resources/img/logo.png" alt="" height="80">Fashion Haven Clothing</a>
 
         <div class="d-flex justify-content-end">
             <div class="collapse navbar-collapse">
@@ -13,6 +13,9 @@
                     </li>
                     <li class="new-item me-4">
                         <a class="nav-link active" aria-current="page" href="cart.php">Cart</a>
+                    </li>
+                    <li class="new-item me-4">
+                        <a class="nav-link active" aria-current="page" href="wishList.php">Wish List</a>
                     </li>
                     <li class="new-item me-4">
                         <button class="btn form-control btn-danger bg-danger-subtle" aria-current="page" onclick="signOut();">Signout</button>

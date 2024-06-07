@@ -12,6 +12,7 @@ if (isset($user)) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="bootstrap.css">
         <link rel="stylesheet" href="style.css">
         <title>Fashion Haven - Order History</title>
@@ -49,9 +50,9 @@ if (isset($user)) {
                             <table class="table table-hover mt-5">
                                 <thead>
                                     <tr>
-                                        <th>Product Name</th>
-                                        <th>Qty</th>
-                                        <th>Price</th>
+                                        <th class="center-center text-body-emphasis">Product Name</th>
+                                        <th class="center-center text-body-emphasis">Quantity</th>
+                                        <th class="center-center text-body-emphasis">Price</th>
                                     </tr>
                                 </thead>
 
@@ -67,21 +68,21 @@ if (isset($user)) {
                                         $d2 = $rs2->fetch_assoc();
                                     ?>
                                         <tr>
-                                            <td><?php echo $d2["name"] ?></td>
-                                            <td><?php echo $d2["oi_qty"] ?></td>
-                                            <td><?php echo $d2["price"] ?></td>
+                                            <td class="center-center col-6"><?php echo $d2["name"] ?></td>
+                                            <td class="center-center"><?php echo $d2["oi_qty"] ?></td>
+                                            <td class="center-center"><?php echo $d2["price"] ?></td>
                                         </tr>
                                     <?php
                                     }
                                     ?>
                                 </tbody>
                             </table>
-
-                        </div>
-                        <div class="mt-1 d-flex flex-column align-items-end pe-5 mt-2">
-                            <h6>Delivery Fee:<span class="text-muted">500</span></h6>
+                            <div class="mt-3 d-flex flex-column align-items-end pe-5 mt-2">
+                            <h5>Delivery Fee:<span class="text-body-emphasis">500</span></h5>
                             <h4>Net Total: <span class="text-warning"><?php echo $d["amount"]; ?></span></h4>
                         </div>
+                        </div>
+
                     <?php
                     }
                 } else {

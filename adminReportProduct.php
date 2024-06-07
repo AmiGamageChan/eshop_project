@@ -12,11 +12,12 @@ if (isset($_SESSION["a"])) {
     $num = $rs->num_rows;
 ?>
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="bootstrap.css" />
         <link rel="stylesheet" href="style.css" />
         <title>Product Report</title>

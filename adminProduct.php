@@ -6,11 +6,12 @@ if (isset($_SESSION["a"])) {
 ?>
 
     <!DOCTYPE html>
-    <html lang="en" data-bs-theme="dark">
+    <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="Resources/img/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="bootstrap.css">
         <title>Products - Admin Panel</title>
@@ -35,7 +36,7 @@ if (isset($_SESSION["a"])) {
                     </div>
 
                     <div class="mt-4">
-                        <button class="btn btn-outline-light col-12" onclick="brandReg();">Brand Register</button>
+                        <button class="btn btn-outline-dark col-12" onclick="brandReg();">Brand Register</button>
                     </div>
 
                 </div>
@@ -52,7 +53,7 @@ if (isset($_SESSION["a"])) {
                     </div>
 
                     <div class="mt-4">
-                        <button class="btn btn-outline-light col-12" onclick="categoryReg();">Category Register</button>
+                        <button class="btn btn-outline-dark col-12" onclick="categoryReg();">Category Register</button>
                     </div>
 
                 </div>
@@ -70,7 +71,7 @@ if (isset($_SESSION["a"])) {
                         </div>
 
                         <div class="mt-4">
-                            <button class="btn btn-outline-light col-12" onclick="colorReg();">Color Register</button>
+                            <button class="btn btn-outline-dark col-12" onclick="colorReg();">Color Register</button>
                         </div>
 
                     </div>
@@ -87,7 +88,7 @@ if (isset($_SESSION["a"])) {
                         </div>
 
                         <div class="mt-4">
-                            <button class="btn btn-outline-light col-12" onclick="sizeReg();">Size Register</button>
+                            <button class="btn btn-outline-dark col-12" onclick="sizeReg();">Size Register</button>
                         </div>
 
                     </div>
